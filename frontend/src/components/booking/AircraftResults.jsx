@@ -58,7 +58,7 @@ const AircraftResults = () => {
   useEffect(() => {
     // Redirect to booking page if no booking details exist
     if (!bookingDetails || !bookingDetails.legs || bookingDetails.legs.length === 0) {
-      router.push('/booking');
+      router('/booking');
     }
   }, [bookingDetails, router]);
   
@@ -113,7 +113,7 @@ const AircraftResults = () => {
     //   .then(priceData => {
     //     setChartedPrice(priceData);
     //     // Navigate to booking confirmation page
-    //     router.push('/booking-confirmation');
+    //     router('/booking-confirmation');
     //   })
     //   .catch(error => {
     //     toast({

@@ -55,7 +55,7 @@ const Header = () => {
 
   const handleLogout = () => {
     logout();
-    router.push('/');
+    router('/');
   };
 
   return (
@@ -128,9 +128,9 @@ const Header = () => {
                   />
                 </MenuButton>
                 <MenuList>
-                  <MenuItem onClick={() => router.push('/dashboard')}>Dashboard</MenuItem>
-                  <MenuItem onClick={() => router.push('/profile')}>Profile</MenuItem>
-                  <MenuItem onClick={() => router.push('/bookings')}>My Bookings</MenuItem>
+                  <MenuItem onClick={() => router('/dashboard')}>Dashboard</MenuItem>
+                  <MenuItem onClick={() => router('/profile')}>Profile</MenuItem>
+                  <MenuItem onClick={() => router('/bookings')}>My Bookings</MenuItem>
                   <MenuDivider />
                   <MenuItem onClick={handleLogout}>Logout</MenuItem>
                 </MenuList>

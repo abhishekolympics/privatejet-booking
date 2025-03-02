@@ -158,3 +158,13 @@
 2025-03-02 21:27:46:2746 [32minfo[39m: [32mFound 1 airports for term: ukhd[39m
 2025-03-02 21:27:48:2748 [32minfo[39m: [32mPOST /api/aviapages/search-aircraft[39m
 2025-03-02 21:27:50:2750 [32minfo[39m: [32mFound 150 aircraft[39m
+2025-03-02 21:50:58:5058 [32minfo[39m: [32mServer running on port 5000[39m
+2025-03-02 21:50:58:5058 [32minfo[39m: [32mMongoDB Connected[39m
+2025-03-02 21:52:20:5220 [32minfo[39m: [32mPOST /api/auth/login[39m
+2025-03-02 21:52:21:5221 [32minfo[39m: [32mPOST /api/aviapages/search-aircraft[39m
+2025-03-02 21:52:23:5223 [32minfo[39m: [32mFound 150 aircraft[39m
+2025-03-02 21:53:20:5320 [32minfo[39m: [32mPOST /api/aviapages/search-aircraft[39m
+2025-03-02 21:53:22:5322 [32minfo[39m: [32mFound 150 aircraft[39m
+2025-03-02 21:53:56:5356 [32minfo[39m: [32mPOST /api/auth/login[39m
+2025-03-02 21:53:56:5356 [32minfo[39m: [32mPOST /api/aviapages/search-aircraft[39m
+2025-03-02 21:53:59:5359 [32minfo[39m: [32mFound 150 aircraft[39m
