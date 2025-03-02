@@ -80,3 +80,81 @@
 2025-03-02 20:58:20:5820 [32minfo[39m: [32mGET /api/auth/me[39m
 2025-03-02 20:58:20:5820 [32minfo[39m: [32mGET /api/auth/me[39m
 2025-03-02 20:58:21:5821 [32minfo[39m: [32mGET /api/bookings[39m
+2025-03-02 21:08:50:850 [32minfo[39m: [32mServer running on port 5000[39m
+2025-03-02 21:08:50:850 [32minfo[39m: [32mMongoDB Connected[39m
+2025-03-02 21:16:50:1650 [32minfo[39m: [32mGET /api/aviapages/airports?term=ls[39m
+2025-03-02 21:16:50:1650 [32minfo[39m: [32mGET /api/aviapages/airports?term=lsg[39m
+2025-03-02 21:16:50:1650 [32minfo[39m: [32mGET /api/aviapages/airports?term=lsgg[39m
+2025-03-02 21:16:51:1651 [32minfo[39m: [32mFound 0 airports for term: lsg[39m
+2025-03-02 21:16:51:1651 [32minfo[39m: [32mFound 258 airports for term: ls[39m
+2025-03-02 21:16:51:1651 [32minfo[39m: [32mFound 1 airports for term: lsgg[39m
+2025-03-02 21:16:54:1654 [32minfo[39m: [32mGET /api/aviapages/airports?term=nc[39m
+2025-03-02 21:16:55:1655 [32minfo[39m: [32mFound 989 airports for term: nc[39m
+2025-03-02 21:16:57:1657 [32minfo[39m: [32mGET /api/aviapages/airports?term=ncv[39m
+2025-03-02 21:16:57:1657 [32minfo[39m: [32mFound 0 airports for term: ncv[39m
+2025-03-02 21:17:15:1715 [32minfo[39m: [32mGET /api/aviapages/airports?term=lf[39m
+2025-03-02 21:17:16:1716 [32minfo[39m: [32mGET /api/aviapages/airports?term=lfm[39m
+2025-03-02 21:17:16:1716 [32minfo[39m: [32mGET /api/aviapages/airports?term=lfmn[39m
+2025-03-02 21:17:16:1716 [32minfo[39m: [32mFound 95 airports for term: lf[39m
+2025-03-02 21:17:17:1717 [32minfo[39m: [32mFound 1 airports for term: lfm[39m
+2025-03-02 21:17:17:1717 [32minfo[39m: [32mFound 1 airports for term: lfmn[39m
+2025-03-02 21:23:04:234 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 21:23:04:234 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 21:23:08:238 [32minfo[39m: [32mGET /api/aviapages/airports?term=ls[39m
+2025-03-02 21:23:08:238 [32minfo[39m: [32mGET /api/aviapages/airports?term=lsg[39m
+2025-03-02 21:23:08:238 [32minfo[39m: [32mGET /api/aviapages/airports?term=lsgg[39m
+2025-03-02 21:23:08:238 [32minfo[39m: [32mFound 0 airports for term: lsg[39m
+2025-03-02 21:23:09:239 [32minfo[39m: [32mFound 1 airports for term: lsgg[39m
+2025-03-02 21:23:09:239 [32minfo[39m: [32mFound 258 airports for term: ls[39m
+2025-03-02 21:23:12:2312 [32minfo[39m: [32mGET /api/aviapages/airports?term=nc[39m
+2025-03-02 21:23:12:2312 [32minfo[39m: [32mFound 989 airports for term: nc[39m
+2025-03-02 21:23:30:2330 [32minfo[39m: [32mGET /api/aviapages/airports?term=lf[39m
+2025-03-02 21:23:31:2331 [32minfo[39m: [32mGET /api/aviapages/airports?term=lfm[39m
+2025-03-02 21:23:31:2331 [32minfo[39m: [32mGET /api/aviapages/airports?term=lfmn[39m
+2025-03-02 21:23:31:2331 [32minfo[39m: [32mFound 95 airports for term: lf[39m
+2025-03-02 21:23:32:2332 [32minfo[39m: [32mFound 1 airports for term: lfm[39m
+2025-03-02 21:23:32:2332 [32minfo[39m: [32mFound 1 airports for term: lfmn[39m
+2025-03-02 21:25:35:2535 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 21:25:35:2535 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 21:25:38:2538 [32minfo[39m: [32mGET /api/aviapages/airports?term=ls[39m
+2025-03-02 21:25:38:2538 [32minfo[39m: [32mGET /api/aviapages/airports?term=lsg[39m
+2025-03-02 21:25:38:2538 [32minfo[39m: [32mGET /api/aviapages/airports?term=lsgg[39m
+2025-03-02 21:25:39:2539 [32minfo[39m: [32mFound 258 airports for term: ls[39m
+2025-03-02 21:25:39:2539 [32minfo[39m: [32mFound 0 airports for term: lsg[39m
+2025-03-02 21:25:39:2539 [32minfo[39m: [32mFound 1 airports for term: lsgg[39m
+2025-03-02 21:25:42:2542 [32minfo[39m: [32mGET /api/aviapages/airports?term=mn[39m
+2025-03-02 21:25:42:2542 [32minfo[39m: [32mGET /api/aviapages/airports?term=mnc[39m
+2025-03-02 21:25:42:2542 [32minfo[39m: [32mGET /api/aviapages/airports?term=mncv[39m
+2025-03-02 21:25:42:2542 [32minfo[39m: [32mFound 18 airports for term: mn[39m
+2025-03-02 21:25:42:2542 [32minfo[39m: [32mFound 1 airports for term: mnc[39m
+2025-03-02 21:25:42:2542 [32minfo[39m: [32mFound 0 airports for term: mncv[39m
+2025-03-02 21:25:52:2552 [32minfo[39m: [32mGET /api/aviapages/airports?term=ln[39m
+2025-03-02 21:25:53:2553 [32minfo[39m: [32mFound 43 airports for term: ln[39m
+2025-03-02 21:25:55:2555 [32minfo[39m: [32mGET /api/aviapages/airports?term=lnm[39m
+2025-03-02 21:25:55:2555 [32minfo[39m: [32mFound 0 airports for term: lnm[39m
+2025-03-02 21:25:55:2555 [32minfo[39m: [32mGET /api/aviapages/airports?term=lnc[39m
+2025-03-02 21:25:56:2556 [32minfo[39m: [32mFound 1 airports for term: lnc[39m
+2025-03-02 21:25:56:2556 [32minfo[39m: [32mGET /api/aviapages/airports?term=lncv[39m
+2025-03-02 21:25:56:2556 [32minfo[39m: [32mFound 0 airports for term: lncv[39m
+2025-03-02 21:26:01:261 [32minfo[39m: [32mGET /api/aviapages/airports?term=uh[39m
+2025-03-02 21:26:01:261 [32minfo[39m: [32mFound 42 airports for term: uh[39m
+2025-03-02 21:26:01:261 [32minfo[39m: [32mGET /api/aviapages/airports?term=uk[39m
+2025-03-02 21:26:02:262 [32minfo[39m: [32mGET /api/aviapages/airports?term=ukh[39m
+2025-03-02 21:26:02:262 [32minfo[39m: [32mFound 168 airports for term: uk[39m
+2025-03-02 21:26:02:262 [32minfo[39m: [32mGET /api/aviapages/airports?term=ukhd[39m
+2025-03-02 21:26:02:262 [32minfo[39m: [32mFound 1 airports for term: ukhd[39m
+2025-03-02 21:26:03:263 [32minfo[39m: [32mFound 10 airports for term: ukh[39m
+2025-03-02 21:27:36:2736 [32minfo[39m: [32mGET /api/aviapages/airports?term=va[39m
+2025-03-02 21:27:36:2736 [32minfo[39m: [32mGET /api/aviapages/airports?term=vaj[39m
+2025-03-02 21:27:36:2736 [32minfo[39m: [32mGET /api/aviapages/airports?term=vajm[39m
+2025-03-02 21:27:36:2736 [32minfo[39m: [32mFound 572 airports for term: va[39m
+2025-03-02 21:27:37:2737 [32minfo[39m: [32mFound 3 airports for term: vaj[39m
+2025-03-02 21:27:37:2737 [32minfo[39m: [32mFound 1 airports for term: vajm[39m
+2025-03-02 21:27:45:2745 [32minfo[39m: [32mGET /api/aviapages/airports?term=uk[39m
+2025-03-02 21:27:46:2746 [32minfo[39m: [32mGET /api/aviapages/airports?term=ukh[39m
+2025-03-02 21:27:46:2746 [32minfo[39m: [32mGET /api/aviapages/airports?term=ukhd[39m
+2025-03-02 21:27:46:2746 [32minfo[39m: [32mFound 168 airports for term: uk[39m
+2025-03-02 21:27:46:2746 [32minfo[39m: [32mFound 10 airports for term: ukh[39m
+2025-03-02 21:27:46:2746 [32minfo[39m: [32mFound 1 airports for term: ukhd[39m
+2025-03-02 21:27:48:2748 [32minfo[39m: [32mPOST /api/aviapages/search-aircraft[39m
+2025-03-02 21:27:50:2750 [32minfo[39m: [32mFound 150 aircraft[39m

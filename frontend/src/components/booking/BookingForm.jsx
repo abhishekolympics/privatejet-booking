@@ -35,7 +35,7 @@ const BookingForm = () => {
   const router = useNavigate();
   const toast = useToast();
   const { setBookingDetails } = useBooking();
-  
+
   const [legs, setLegs] = useState([{
     id: 1,
     departureAirport: null,
@@ -44,9 +44,9 @@ const BookingForm = () => {
     departureTime: '10:00',
     passengers: 2
   }]);
-  
+
   const { register, handleSubmit, control, formState: { errors } } = useForm();
-  
+
   const addLeg = () => {
     const newLeg = {
       id: legs.length + 1,
@@ -56,21 +56,21 @@ const BookingForm = () => {
       departureTime: '10:00',
       passengers: legs[legs.length - 1].passengers
     };
-    
+
     setLegs([...legs, newLeg]);
   };
-  
+
   const removeLeg = (id) => {
     if (legs.length <= 1) return;
     setLegs(legs.filter(leg => leg.id !== id));
   };
-  
+
   const handleLegChange = (id, field, value) => {
-    setLegs(legs.map(leg => 
+    setLegs(legs.map(leg =>
       leg.id === id ? { ...leg, [field]: value } : leg
     ));
   };
-  
+
   const onSubmit = (data) => {
     // Format legs for API request
     const formattedLegs = legs.map(leg => ({
@@ -83,7 +83,7 @@ const BookingForm = () => {
       pax: leg.passengers,
       departure_datetime: `${formatDate(leg.departureDate)}T${leg.departureTime}`
     }));
-    
+
     // Save booking details to context
     setBookingDetails({
       legs: formattedLegs,
@@ -94,18 +94,18 @@ const BookingForm = () => {
       ],
       currency_code: data.currency
     });
-    
+
     // Navigate to aircraft selection page
-    router.push('/aircraft-selection');
+    router('/aircraft-selection');
   };
-  
+
   const formatDate = (date) => {
     return date.toISOString().split('T')[0];
   };
 
   return (
-    <Box 
-      as="form" 
+    <Box
+      as="form"
       onSubmit={handleSubmit(onSubmit)}
       bg="white"
       borderRadius="xl"
@@ -114,7 +114,7 @@ const BookingForm = () => {
       mb={10}
     >
       <Heading size="lg" mb={6} color="brand.700">Book Your Private Jet</Heading>
-      
+
       {legs.map((leg, index) => (
         <Box key={leg.id} mb={6}>
           <Flex justify="space-between" align="center" mb={4}>
@@ -131,23 +131,27 @@ const BookingForm = () => {
               />
             )}
           </Flex>
-          
+
           <Divider mb={4} />
-          
+
           <VStack spacing={4} align="stretch">
             <HStack spacing={4}>
               <FormControl isRequired isInvalid={!leg.departureAirport}>
-                <FormLabel>From</FormLabel>
-                <AirportSearchInput
-                  value={leg.departureAirport}
-                  onChange={(airport) => handleLegChange(leg.id, 'departureAirport', airport)}
-                  placeholder="Search departure airport"
-                />
-                {!leg.departureAirport && (
-                  <FormErrorMessage>Departure airport is required</FormErrorMessage>
-                )}
+                <FormControl isRequired isInvalid={!leg.departureAirport}>
+                  <FormLabel>From</FormLabel>
+                  <AirportSearchInput
+                    value={leg.departureAirport}
+                    onChange={(airport) => handleLegChange(leg.id, 'departureAirport', airport)}
+                    placeholder="Search departure airport"
+                    name={`departure-airport-${leg.id}`}
+                    required={true}
+                  />
+                  {!leg.departureAirport && (
+                    <FormErrorMessage>Departure airport is required</FormErrorMessage>
+                  )}
+                </FormControl>
               </FormControl>
-              
+
               <FormControl isRequired isInvalid={!leg.arrivalAirport}>
                 <FormLabel>To</FormLabel>
                 <AirportSearchInput
@@ -160,7 +164,7 @@ const BookingForm = () => {
                 )}
               </FormControl>
             </HStack>
-            
+
             <HStack spacing={4}>
               <FormControl isRequired>
                 <FormLabel>Date</FormLabel>
@@ -178,7 +182,7 @@ const BookingForm = () => {
                   )}
                 />
               </FormControl>
-              
+
               <FormControl isRequired>
                 <FormLabel>Time</FormLabel>
                 <Select
@@ -192,7 +196,7 @@ const BookingForm = () => {
                   ))}
                 </Select>
               </FormControl>
-              
+
               <FormControl isRequired>
                 <FormLabel>Passengers</FormLabel>
                 <NumberInput
@@ -212,7 +216,7 @@ const BookingForm = () => {
           </VStack>
         </Box>
       ))}
-      
+
       <Button
         leftIcon={<AddIcon />}
         variant="outline"
@@ -222,12 +226,12 @@ const BookingForm = () => {
       >
         Add Return Flight
       </Button>
-      
+
       <Divider mb={6} />
-      
+
       <VStack spacing={4} align="stretch">
         <Heading size="md" color="brand.600" mb={2}>Aircraft Preferences</Heading>
-        
+
         <FormControl isRequired>
           <FormLabel>Aircraft Class</FormLabel>
           <Select
@@ -242,7 +246,7 @@ const BookingForm = () => {
           </Select>
           {errors.aircraftClass && <FormErrorMessage>{errors.aircraftClass.message}</FormErrorMessage>}
         </FormControl>
-        
+
         <FormControl>
           <FormLabel>Currency</FormLabel>
           <Select
@@ -255,7 +259,7 @@ const BookingForm = () => {
           </Select>
         </FormControl>
       </VStack>
-      
+
       <Button
         mt={8}
         size="lg"
