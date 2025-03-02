@@ -2,3 +2,81 @@
 2025-03-02 20:40:53:4053 [32minfo[39m: [32mMongoDB Connected[39m
 2025-03-02 20:41:36:4136 [32minfo[39m: [32mServer running on port 5000[39m
 2025-03-02 20:41:36:4136 [32minfo[39m: [32mMongoDB Connected[39m
+2025-03-02 20:41:43:4143 [32minfo[39m: [32mServer running on port 5000[39m
+2025-03-02 20:41:43:4143 [32minfo[39m: [32mMongoDB Connected[39m
+2025-03-02 20:48:42:4842 [32minfo[39m: [32mPOST /api/auth/login[39m
+2025-03-02 20:48:42:4842 [31merror[39m: [31mError: Invalid credentials[39m
+2025-03-02 20:49:34:4934 [32minfo[39m: [32mPOST /api/auth/login[39m
+2025-03-02 20:49:34:4934 [31merror[39m: [31mError: Invalid credentials[39m
+2025-03-02 20:50:04:504 [32minfo[39m: [32mPOST /api/auth/register[39m
+2025-03-02 20:50:05:505 [32minfo[39m: [32mGET /api/bookings[39m
+2025-03-02 20:50:05:505 [31merror[39m: [31mError: Not authorized to access this route[39m
+2025-03-02 20:50:25:5025 [32minfo[39m: [32mPOST /api/auth/login[39m
+2025-03-02 20:50:25:5025 [32minfo[39m: [32mGET /api/bookings[39m
+2025-03-02 20:50:36:5036 [32minfo[39m: [32mGET /api/aviapages/airports?term=lu[39m
+2025-03-02 20:50:36:5036 [32minfo[39m: [32mGET /api/aviapages/airports?term=luc[39m
+2025-03-02 20:50:36:5036 [32minfo[39m: [32mGET /api/aviapages/airports?term=luck[39m
+2025-03-02 20:50:36:5036 [32minfo[39m: [32mGET /api/aviapages/airports?term=luckn[39m
+2025-03-02 20:50:36:5036 [32minfo[39m: [32mGET /api/aviapages/airports?term=luckno[39m
+2025-03-02 20:50:36:5036 [32minfo[39m: [32mGET /api/aviapages/airports?term=lucknow[39m
+2025-03-02 20:50:37:5037 [31merror[39m: [31mError searching airports: Request failed with status code 401[39m
+2025-03-02 20:50:37:5037 [31merror[39m: [31mAirport search error: Request failed with status code 401[39m
+2025-03-02 20:50:37:5037 [31merror[39m: [31mError: Error searching airports[39m
+2025-03-02 20:50:37:5037 [31merror[39m: [31mError searching airports: Request failed with status code 401[39m
+2025-03-02 20:50:37:5037 [31merror[39m: [31mAirport search error: Request failed with status code 401[39m
+2025-03-02 20:50:37:5037 [31merror[39m: [31mError: Error searching airports[39m
+2025-03-02 20:50:37:5037 [31merror[39m: [31mError searching airports: Request failed with status code 401[39m
+2025-03-02 20:50:37:5037 [31merror[39m: [31mAirport search error: Request failed with status code 401[39m
+2025-03-02 20:50:37:5037 [31merror[39m: [31mError: Error searching airports[39m
+2025-03-02 20:50:37:5037 [31merror[39m: [31mError searching airports: Request failed with status code 401[39m
+2025-03-02 20:50:37:5037 [31merror[39m: [31mAirport search error: Request failed with status code 401[39m
+2025-03-02 20:50:37:5037 [31merror[39m: [31mError: Error searching airports[39m
+2025-03-02 20:50:37:5037 [31merror[39m: [31mError searching airports: Request failed with status code 401[39m
+2025-03-02 20:50:37:5037 [31merror[39m: [31mAirport search error: Request failed with status code 401[39m
+2025-03-02 20:50:37:5037 [31merror[39m: [31mError: Error searching airports[39m
+2025-03-02 20:50:37:5037 [31merror[39m: [31mError searching airports: Request failed with status code 401[39m
+2025-03-02 20:50:37:5037 [31merror[39m: [31mAirport search error: Request failed with status code 401[39m
+2025-03-02 20:50:37:5037 [31merror[39m: [31mError: Error searching airports[39m
+2025-03-02 20:50:41:5041 [32minfo[39m: [32mGET /api/aviapages/airports?term=lo[39m
+2025-03-02 20:50:41:5041 [32minfo[39m: [32mGET /api/aviapages/airports?term=los[39m
+2025-03-02 20:50:41:5041 [31merror[39m: [31mError searching airports: Request failed with status code 401[39m
+2025-03-02 20:50:41:5041 [31merror[39m: [31mAirport search error: Request failed with status code 401[39m
+2025-03-02 20:50:41:5041 [31merror[39m: [31mError: Error searching airports[39m
+2025-03-02 20:50:42:5042 [31merror[39m: [31mError searching airports: Request failed with status code 401[39m
+2025-03-02 20:50:42:5042 [31merror[39m: [31mAirport search error: Request failed with status code 401[39m
+2025-03-02 20:50:42:5042 [31merror[39m: [31mError: Error searching airports[39m
+2025-03-02 20:50:43:5043 [32minfo[39m: [32mGET /api/aviapages/airports?term=los[39m
+2025-03-02 20:50:43:5043 [31merror[39m: [31mError searching airports: Request failed with status code 401[39m
+2025-03-02 20:50:43:5043 [31merror[39m: [31mAirport search error: Request failed with status code 401[39m
+2025-03-02 20:50:43:5043 [31merror[39m: [31mError: Error searching airports[39m
+2025-03-02 20:50:43:5043 [32minfo[39m: [32mGET /api/aviapages/airports?term=los%20a[39m
+2025-03-02 20:50:43:5043 [31merror[39m: [31mError searching airports: Request failed with status code 401[39m
+2025-03-02 20:50:43:5043 [31merror[39m: [31mAirport search error: Request failed with status code 401[39m
+2025-03-02 20:50:43:5043 [31merror[39m: [31mError: Error searching airports[39m
+2025-03-02 20:50:43:5043 [32minfo[39m: [32mGET /api/aviapages/airports?term=los%20an[39m
+2025-03-02 20:50:43:5043 [31merror[39m: [31mError searching airports: Request failed with status code 401[39m
+2025-03-02 20:50:43:5043 [31merror[39m: [31mAirport search error: Request failed with status code 401[39m
+2025-03-02 20:50:43:5043 [31merror[39m: [31mError: Error searching airports[39m
+2025-03-02 20:53:02:532 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:53:02:532 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:54:20:5420 [32minfo[39m: [32mPOST /api/auth/login[39m
+2025-03-02 20:55:23:5523 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:55:23:5523 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:55:51:5551 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:55:51:5551 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:56:03:563 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:56:03:563 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:56:17:5617 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:56:17:5617 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:56:17:5617 [32minfo[39m: [32mGET /api/bookings[39m
+2025-03-02 20:56:36:5636 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:56:36:5636 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:56:39:5639 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:56:39:5639 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:56:45:5645 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:56:45:5645 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:56:46:5646 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:56:46:5646 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:58:20:5820 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:58:20:5820 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-02 20:58:21:5821 [32minfo[39m: [32mGET /api/bookings[39m
