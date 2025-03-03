@@ -34,3 +34,7 @@
 2025-03-02 20:50:43:5043 [31merror[39m: [31mError searching airports: Request failed with status code 401[39m
 2025-03-02 20:50:43:5043 [31merror[39m: [31mAirport search error: Request failed with status code 401[39m
 2025-03-02 20:50:43:5043 [31merror[39m: [31mError: Error searching airports[39m
+2025-03-03 20:52:42:5242 [31merror[39m: [31mError: Invalid credentials[39m
+2025-03-03 20:52:45:5245 [31merror[39m: [31mError: Invalid credentials[39m
+2025-03-03 20:52:50:5250 [31merror[39m: [31mError: Invalid credentials[39m
+2025-03-03 20:54:20:5420 [31merror[39m: [31mError: User already exists[39m

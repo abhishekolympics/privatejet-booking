@@ -30,6 +30,7 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/bookings', require('./routes/bookings'));
 app.use('/api/aviapages', require('./routes/aviapages'));
+app.use('/api/contact', require('./routes/contact'));
 
 // Error handling middleware
 app.use(errorHandler);

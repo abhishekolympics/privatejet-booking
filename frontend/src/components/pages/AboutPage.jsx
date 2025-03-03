@@ -132,19 +132,13 @@ const AboutPage = () => {
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
           <TeamMember 
-            name="John Smith" 
+            name="Abhishek Kumar Singh" 
             role="Chief Executive Officer" 
             image="/images/about/ceo.jpg"
             description="Former airline executive with over 20 years of aviation experience."
           />
           <TeamMember 
-            name="Sarah Johnson" 
-            role="Chief Operating Officer" 
-            image="/images/about/coo.jpg"
-            description="Aviation industry veteran specialized in operations and logistics."
-          />
-          <TeamMember 
-            name="Michael Chen" 
+            name="Manoj Kumar" 
             role="Chief Technology Officer" 
             image="/images/about/cto.jpg"
             description="Tech entrepreneur with multiple successful platforms in the travel industry."

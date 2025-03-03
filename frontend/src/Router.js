@@ -14,6 +14,7 @@ import BookingConfirmationPage from './components/pages/BookingConfirmationPage'
 import PaymentPage from './components/pages/PaymentPage';
 import DashboardPage from './components/pages/DashboardPage';
 import NotFoundPage from './components/pages/NotFoundPage';
+import ContactPage from './components/pages/ContactPage';
 
 const AppRouter = () => {
   return (
@@ -48,6 +49,11 @@ const AppRouter = () => {
       <Route path="/dashboard" element={
         <PrivateRoute>
           <DashboardPage />
+        </PrivateRoute>
+      } />
+      <Route path="/contact" element={
+        <PrivateRoute>
+          <ContactPage />
         </PrivateRoute>
       } />
       

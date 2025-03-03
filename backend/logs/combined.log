@@ -168,3 +168,65 @@
 2025-03-02 21:53:56:5356 [32minfo[39m: [32mPOST /api/auth/login[39m
 2025-03-02 21:53:56:5356 [32minfo[39m: [32mPOST /api/aviapages/search-aircraft[39m
 2025-03-02 21:53:59:5359 [32minfo[39m: [32mFound 150 aircraft[39m
+2025-03-03 20:15:11:1511 [32minfo[39m: [32mServer running on port 5000[39m
+2025-03-03 20:15:11:1511 [32minfo[39m: [32mMongoDB Connected[39m
+2025-03-03 20:15:20:1520 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 20:15:20:1520 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 20:21:37:2137 [32minfo[39m: [32mServer running on port 5000[39m
+2025-03-03 20:21:37:2137 [32minfo[39m: [32mMongoDB Connected[39m
+2025-03-03 20:52:42:5242 [32minfo[39m: [32mPOST /api/auth/login[39m
+2025-03-03 20:52:42:5242 [31merror[39m: [31mError: Invalid credentials[39m
+2025-03-03 20:52:45:5245 [32minfo[39m: [32mPOST /api/auth/login[39m
+2025-03-03 20:52:45:5245 [31merror[39m: [31mError: Invalid credentials[39m
+2025-03-03 20:52:50:5250 [32minfo[39m: [32mPOST /api/auth/login[39m
+2025-03-03 20:52:50:5250 [31merror[39m: [31mError: Invalid credentials[39m
+2025-03-03 20:53:57:5357 [32minfo[39m: [32mServer running on port 5000[39m
+2025-03-03 20:53:57:5357 [32minfo[39m: [32mMongoDB Connected[39m
+2025-03-03 20:54:20:5420 [32minfo[39m: [32mPOST /api/auth/register[39m
+2025-03-03 20:54:20:5420 [31merror[39m: [31mError: User already exists[39m
+2025-03-03 20:54:32:5432 [32minfo[39m: [32mPOST /api/auth/login[39m
+2025-03-03 20:54:32:5432 [32minfo[39m: [32mGET /api/bookings[39m
+2025-03-03 21:00:50:050 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:00:50:050 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:00:51:051 [32minfo[39m: [32mGET /api/bookings[39m
+2025-03-03 21:01:08:18 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:01:08:18 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:01:08:18 [32minfo[39m: [32mGET /api/bookings[39m
+2025-03-03 21:02:29:229 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:02:29:229 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:02:30:230 [32minfo[39m: [32mGET /api/bookings[39m
+2025-03-03 21:11:08:118 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:11:08:118 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:11:09:119 [32minfo[39m: [32mGET /api/bookings[39m
+2025-03-03 21:13:41:1341 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:13:41:1341 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:14:45:1445 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:14:45:1445 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:17:52:1752 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:17:52:1752 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:19:18:1918 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:19:18:1918 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:21:42:2142 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:21:42:2142 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:25:28:2528 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:25:28:2528 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:27:01:271 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:27:01:271 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:33:16:3316 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:33:16:3316 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:34:37:3437 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:34:37:3437 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:35:03:353 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:35:03:353 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:42:43:4243 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:42:43:4243 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:44:57:4457 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:44:57:4457 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:48:09:489 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:48:09:489 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:49:36:4936 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:49:36:4936 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-03 21:55:45:5545 [32minfo[39m: [32mServer running on port 5000[39m
+2025-03-03 21:55:45:5545 [32minfo[39m: [32mMongoDB Connected[39m
+2025-03-03 21:56:24:5624 [32minfo[39m: [32mServer running on port 5000[39m
+2025-03-03 21:56:25:5625 [32minfo[39m: [32mMongoDB Connected[39m
