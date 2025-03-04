@@ -52,24 +52,21 @@ const Header = () => {
       transition="all 0.3s ease"
     >
       <Container maxW="container.xl">
-        <Flex color={scrolled ? 'gray.600' : 'white'} minH="60px" align="center" py={2} px={4}>
+        <Flex minH="50px" align="center" py={1} px={4}>
           <IconButton
             display={{ base: 'flex', md: 'none' }}
             onClick={onToggle}
             icon={isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />}
             variant="ghost"
             aria-label="Toggle Navigation"
-            color={scrolled ? 'gray.600' : 'white'}
           />
           <Flex flex={1} justify={{ base: 'center', md: 'start' }}>
             <Link to="/" bg="blue">
-              {/* <Image src={scrolled ? '/images/logo-dark.svg' : '/images/logo-light.svg'} alt="Logo" height="40px" backgroundColor="white" /> */}
-              <Box as="a" cursor="pointer" p={1} borderRadius="md">
+              <Box cursor="pointer" p={1} borderRadius="md">
                 <Image 
-                  src={scrolled ? "/images/logo-light.svg" : "/images/logo-light.svg"} 
+                  src={"/images/logo-light.svg"} 
                   alt="PrivateJet Logo" 
-                  height="40px"
-                  bg="white"
+                  height="30px"
                 />
               </Box>
             </Link>
@@ -114,7 +111,7 @@ const Header = () => {
 };
 
 const DesktopNav = ({ scrolled }) => {
-  const linkColor = scrolled ? 'gray.600' : 'white';
+  const linkColor = 'gray.600';
   const linkHoverColor = scrolled ? 'brand.500' : 'gray.200';
   const popoverBg = useColorModeValue('white', 'gray.800');
 
@@ -125,7 +122,7 @@ const DesktopNav = ({ scrolled }) => {
           <Popover trigger="hover" placement="bottom-start">
             <PopoverTrigger>
               <Link to={href ?? '#'}>
-                <Text p={2} fontSize="sm" fontWeight={500} color={linkColor} _hover={{ color: linkHoverColor }}>
+                <Text p={2} fontSize="sm" fontWeight={500} color={linkColor}  transition='all 0.5s ease' _hover={{ transform: 'translateY(5px)' }}>
                   {label}
                 </Text>
               </Link>
