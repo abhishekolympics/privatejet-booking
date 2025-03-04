@@ -61,13 +61,12 @@ const Header = () => {
             aria-label="Toggle Navigation"
             color={scrolled ? 'gray.600' : 'white'}
           />
-
           <Flex flex={1} justify={{ base: 'center', md: 'start' }}>
             <Link to="/" bg="blue">
               {/* <Image src={scrolled ? '/images/logo-dark.svg' : '/images/logo-light.svg'} alt="Logo" height="40px" backgroundColor="white" /> */}
               <Box as="a" cursor="pointer" p={1} borderRadius="md">
                 <Image 
-                  src={scrolled ? "/images/logo-dark.svg" : "/images/logo-light.svg"} 
+                  src={scrolled ? "/images/logo-light.svg" : "/images/logo-light.svg"} 
                   alt="PrivateJet Logo" 
                   height="40px"
                   bg="white"
