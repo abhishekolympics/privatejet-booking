@@ -15,7 +15,14 @@ import { SearchIcon } from '@chakra-ui/icons';
 import { useQuery } from 'react-query';
 import { searchAirports } from '../../utils/api';
 
-const AirportSearchInput = ({ value, onChange, placeholder, name, required = false }) => {
+const AirportSearchInput = ({ 
+  value, 
+  onChange, 
+  placeholder, 
+  name, 
+  required = false,
+  initialAirportCode = null
+}) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -36,6 +43,24 @@ const AirportSearchInput = ({ value, onChange, placeholder, name, required = fal
       staleTime: 60000, // 1 minute
     }
   );
+
+  // Handle initial airport code
+  useEffect(() => {
+    if (initialAirportCode && !value) {
+      console.log(`Initializing search for airport code: ${initialAirportCode}`);
+      // Set search term to trigger search
+      setSearchTerm(initialAirportCode);
+    }
+  }, [initialAirportCode, value]);
+
+  // Auto-select first result for initialAirportCode
+  useEffect(() => {
+    if (initialAirportCode && airports && airports.length > 0 && !value) {
+      console.log('Found airports for initial code, selecting first result:', airports[0]);
+      // Auto-select the first airport in the results
+      handleSelectAirport(airports[0]);
+    }
+  }, [airports, initialAirportCode, value]);
   
   useEffect(() => {
     if (searchTerm.length >= 2) {
@@ -120,7 +145,6 @@ const AirportSearchInput = ({ value, onChange, placeholder, name, required = fal
         </Flex>
       )}
       
-      {/* Rest of the component remains the same */}
       {isDropdownOpen && (
         <Box
           position="absolute"
