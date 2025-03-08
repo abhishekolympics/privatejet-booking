@@ -1,5 +1,6 @@
 // components/pages/AboutPage.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
   Box,
   Container,
@@ -20,6 +21,26 @@ import { useNavigate } from 'react-router-dom';
 
 const AboutPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Handle hash navigation for scrolling to specific section
+  useEffect(() => {
+    // Check if there's a hash in the URL
+    if (location.hash) {
+      // Get the element by ID (remove the # from the hash)
+      const element = document.getElementById(location.hash.substring(1));
+      
+      if (element) {
+        // Wait a bit for the page to fully render and then scroll
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    } else {
+      // If no hash, scroll to top of page
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
 
   return (
     <Container maxW="container.xl" py={10}>
@@ -126,7 +147,7 @@ const AboutPage = () => {
       </Box>
 
       {/* Team Section */}
-      <Box mb={20}>
+      <Box mb={20} id="leadership-team">
         <Heading as="h2" size="xl" textAlign="center" mb={10}>
           Our Leadership Team
         </Heading>
