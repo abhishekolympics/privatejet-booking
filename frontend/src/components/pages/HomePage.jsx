@@ -1,12 +1,10 @@
 // src/components/pages/HomePage.jsx
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {
   Box,
   Button,
   Container,
-  Flex,
   Heading,
   Text,
   Stack,
@@ -152,31 +150,37 @@ const HomePage = () => {
                 image="/images/destinations/new-york.jpg"
                 title="New York"
                 description="The bustling financial and cultural capital of the USA."
+                airportCode="KJFK"
               />
               <DestinationCard 
                 image="/images/destinations/london.jpg"
                 title="London"
                 description="A global city with rich history and modern attractions."
+                airportCode="EGLL"
               />
               <DestinationCard 
                 image="/images/destinations/dubai.jpg"
                 title="Dubai"
                 description="Known for luxury shopping, ultramodern architecture, and vibrant nightlife."
+                airportCode="OMDB"
               />
               <DestinationCard 
                 image="/images/destinations/paris.jpg"
                 title="Paris"
                 description="The city of lights, known for art, fashion, and gastronomy."
+                airportCode="LFPG"
               />
               <DestinationCard 
                 image="/images/destinations/miami.jpg"
                 title="Miami"
                 description="A vibrant city with beautiful beaches and exciting nightlife."
+                airportCode="KMIA"
               />
               <DestinationCard 
                 image="/images/destinations/las-vegas.jpg"
                 title="Las Vegas"
                 description="The entertainment capital with casinos, shows, and luxury resorts."
+                airportCode="KLAS"
               />
             </SimpleGrid>
           </VStack>
@@ -239,7 +243,16 @@ const FeatureCard = ({ icon, title, text }) => {
 };
 
 // Destination Card Component
-const DestinationCard = ({ image, title, description }) => {
+const DestinationCard = ({ image, title, description, airportCode }) => {
+
+  const navigate = useNavigate();
+  
+  const handleBookClick = () => {
+    sessionStorage.setItem('selectedDestinationAirport', airportCode);
+    console.log('Selected destination in homepage:', airportCode);
+    navigate('/booking');
+  };
+
   return (
     <Box 
       borderRadius="lg" 
@@ -258,8 +271,7 @@ const DestinationCard = ({ image, title, description }) => {
           colorScheme="brand"
           size="sm"
           mt={4}
-          as={Link}
-          to="/booking"
+          onClick={handleBookClick}
         >
           Book a Flight
         </Button>

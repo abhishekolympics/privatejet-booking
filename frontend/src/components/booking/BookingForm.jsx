@@ -1,6 +1,6 @@
 // components/booking/BookingForm.jsx - Main booking form component
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -19,8 +19,6 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
-  Text,
-  useToast,
   IconButton,
   Divider
 } from '@chakra-ui/react';
@@ -31,9 +29,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useBooking } from '../../hooks/useBooking';
 import AirportSearchInput from '../ui/AirportSearchInput';
 
-const BookingForm = () => {
+const BookingForm = ({ destinationAirport }) => {
   const router = useNavigate();
-  const toast = useToast();
   const { setBookingDetails } = useBooking();
 
   const [legs, setLegs] = useState([{
@@ -154,11 +151,12 @@ const BookingForm = () => {
 
               <FormControl isRequired isInvalid={!leg.arrivalAirport}>
                 <FormLabel>To</FormLabel>
-                <AirportSearchInput
-                  value={leg.arrivalAirport}
-                  onChange={(airport) => handleLegChange(leg.id, 'arrivalAirport', airport)}
-                  placeholder="Search arrival airport"
-                />
+                  <AirportSearchInput
+                    value={leg.arrivalAirport}
+                    onChange={(airport) => handleLegChange(leg.id, 'arrivalAirport', airport)}
+                    placeholder="Search arrival airport"
+                    initialAirportCode={index === 0 ? destinationAirport : null}
+                  />
                 {!leg.arrivalAirport && (
                   <FormErrorMessage>Arrival airport is required</FormErrorMessage>
                 )}
