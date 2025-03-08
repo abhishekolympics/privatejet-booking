@@ -15,6 +15,7 @@ import PaymentPage from './components/pages/PaymentPage';
 import DashboardPage from './components/pages/DashboardPage';
 import NotFoundPage from './components/pages/NotFoundPage';
 import ContactPage from './components/pages/ContactPage';
+import CareerPage from './components/pages/CareerPage';
 
 const AppRouter = () => {
   return (
@@ -24,6 +25,7 @@ const AppRouter = () => {
       <Route path="/about" element={<AboutPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/careers" element={<CareerPage />} />
       
       {/* Protected Routes */}
       <Route path="/booking" element={
