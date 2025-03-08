@@ -16,6 +16,11 @@ import DashboardPage from './components/pages/DashboardPage';
 import NotFoundPage from './components/pages/NotFoundPage';
 import ContactPage from './components/pages/ContactPage';
 import CareerPage from './components/pages/CareerPage';
+import PartnersPage from './components/pages/PartnersPage';
+import EmptyLegsPage from './components/pages/EmptyLegsPage';
+import AircraftTypesPage from './components/pages/AircraftTypesPage';
+import AircraftManagementPage from './components/pages/AircraftManagementPage';
+import ConciergeServicesPage from './components/pages/ConciergeServicesPage';
 
 const AppRouter = () => {
   return (
@@ -26,6 +31,12 @@ const AppRouter = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/careers" element={<CareerPage />} />
+      <Route path="/partners" element={<PartnersPage />} />
+      <Route path="/empty-legs" element={<EmptyLegsPage />} />
+      <Route path="/aircraft-types" element={<AircraftTypesPage />} />
+      <Route path="/aircraft-management" element={<AircraftManagementPage />} />
+      <Route path="/concierge" element={<ConciergeServicesPage />} />
+      <Route path="/contact" element={<ContactPage />} />
       
       {/* Protected Routes */}
       <Route path="/booking" element={
@@ -51,11 +62,6 @@ const AppRouter = () => {
       <Route path="/dashboard" element={
         <PrivateRoute>
           <DashboardPage />
-        </PrivateRoute>
-      } />
-      <Route path="/contact" element={
-        <PrivateRoute>
-          <ContactPage />
         </PrivateRoute>
       } />
       
