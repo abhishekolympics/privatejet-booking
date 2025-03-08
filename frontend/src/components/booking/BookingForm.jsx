@@ -32,6 +32,7 @@ import AirportSearchInput from '../ui/AirportSearchInput';
 const BookingForm = ({ destinationAirport }) => {
   const router = useNavigate();
   const { setBookingDetails } = useBooking();
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const [legs, setLegs] = useState([{
     id: 1,
@@ -68,7 +69,23 @@ const BookingForm = ({ destinationAirport }) => {
     ));
   };
 
+  const shouldShowError = (field) => {
+    return formSubmitted && !field;
+  };
+
   const onSubmit = (data) => {
+    // Set form as submitted to trigger validation display
+    setFormSubmitted(true);
+
+    // Check if all required fields are filled
+    const allFieldsValid = legs.every(leg => 
+      leg.departureAirport && leg.arrivalAirport
+    );
+
+    if (!allFieldsValid) {
+      return; // Stop submission if validation fails
+    }
+
     // Format legs for API request
     const formattedLegs = legs.map(leg => ({
       departure_airport: {
@@ -133,8 +150,8 @@ const BookingForm = ({ destinationAirport }) => {
 
           <VStack spacing={4} align="stretch">
             <HStack spacing={4}>
-              <FormControl isRequired isInvalid={!leg.departureAirport}>
-                <FormControl isRequired isInvalid={!leg.departureAirport}>
+              <FormControl isRequired isInvalid={shouldShowError(leg.departureAirport)}>
+                <FormControl isRequired isInvalid={shouldShowError(leg.departureAirport)}>
                   <FormLabel>From</FormLabel>
                   <AirportSearchInput
                     value={leg.departureAirport}
@@ -143,13 +160,13 @@ const BookingForm = ({ destinationAirport }) => {
                     name={`departure-airport-${leg.id}`}
                     required={true}
                   />
-                  {!leg.departureAirport && (
-                    <FormErrorMessage>Departure airport is required</FormErrorMessage>
-                  )}
+                   {shouldShowError(leg.departureAirport) && (
+                  <FormErrorMessage>Departure airport is required</FormErrorMessage>
+                )}
                 </FormControl>
               </FormControl>
 
-              <FormControl isRequired isInvalid={!leg.arrivalAirport}>
+              <FormControl isRequired isInvalid={shouldShowError(leg.arrivalAirport)}>
                 <FormLabel>To</FormLabel>
                   <AirportSearchInput
                     value={leg.arrivalAirport}
@@ -157,7 +174,7 @@ const BookingForm = ({ destinationAirport }) => {
                     placeholder="Search arrival airport"
                     initialAirportCode={index === 0 ? destinationAirport : null}
                   />
-                {!leg.arrivalAirport && (
+                {shouldShowError(leg.arrivalAirport) && (
                   <FormErrorMessage>Arrival airport is required</FormErrorMessage>
                 )}
               </FormControl>
