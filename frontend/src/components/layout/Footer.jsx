@@ -81,7 +81,7 @@ import {
                 Company
               </Heading>
               <Link href={'/about'}>About Us</Link>
-              <Link href={'/team'}>Our Team</Link>
+              <Link href={'/about#leadership-team'}>Our Team</Link>
               <Link href={'/careers'}>Careers</Link>
               <Link href={'/contact'}>Contact Us</Link>
               <Link href={'/partners'}>Partners</Link>
