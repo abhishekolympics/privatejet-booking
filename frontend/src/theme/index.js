@@ -29,14 +29,24 @@ const colors = {
     gold: "#D4AF37",
     silver: "#C0C0C0",
     platinum: "#E5E4E2",
-    jet: "#343434"
+    jet: "#343434",
   },
   status: {
     success: "#48BB78",
     error: "#E53E3E",
     warning: "#F6AD55",
     info: "#4299E1",
-  }
+  },
+  primary: {
+    800: {
+      default: "#D7CFB3",
+      _dark: "#F5F1E3",
+    },
+    900: {
+      default: "#41230A",
+      _dark: "#462F10",
+    },
+  },
 };
 
 const fonts = {
@@ -47,6 +57,10 @@ const fonts = {
 const theme = extendTheme({
   colors,
   fonts,
+  config: {
+    initialColorMode: "light",
+    useSystemColor: true,
+  },
   components: {
     Button: {
       baseStyle: {
