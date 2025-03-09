@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { FaPlane, FaCalendarAlt, FaCheckCircle, FaClock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import SplitText from "../ui/SplitText";
 
 // Custom dark mode color
 const DARK_COLOR = "#000000";
@@ -200,6 +201,8 @@ const HomePage = () => {
     };
   }, [colorMode, isDarkReaderEnabled]);
 
+  const handleAnimationComplete = () => {};
+
   return (
     <>
       {/* Hero Section - Premium design approach */}
@@ -257,25 +260,51 @@ const HomePage = () => {
                   align={{ base: "center", lg: "flex-start" }}
                   maxW={{ base: "100%", lg: "100%" }}
                 >
-                  <Heading
+                  <SplitText
+                    text="Elevate Your Travel Experience"
+                    delay={30}
+                    animationFrom={{
+                      opacity: 0,
+                      transform: "translate3d(0,50px,0)",
+                    }}
+                    animationTo={{
+                      opacity: 1,
+                      transform: "translate3d(0,0,0)",
+                    }}
+                    easing="easeOutCubic"
+                    threshold={0.2}
+                    rootMargin="-50px"
+                    onLetterAnimationComplete={handleAnimationComplete}
+                    // Add the Heading styling props:
                     as="h1"
                     fontSize={{ base: "4xl", md: "5xl", lg: "6xl" }}
                     fontWeight="bold"
                     color={headingColor}
                     lineHeight="1.1"
                     letterSpacing="-1px"
-                  >
-                    Elevate Your Travel Experience
-                  </Heading>
-
-                  <Text
+                    textAlign={{ base: "center", lg: "left" }}
+                  />
+                  <SplitText
+                    text="Book private jets on demand. Experience the luxury, comfort, and flexibility of flying on your own schedule."
+                    delay={9} // Slightly faster than the heading for a nice staggered effect
+                    animationFrom={{
+                      opacity: 0,
+                      transform: "translate3d(0,30px,0)",
+                    }} // Smaller movement than the heading
+                    animationTo={{
+                      opacity: 1,
+                      transform: "translate3d(0,0,0)",
+                    }}
+                    easing="easeOutCubic"
+                    threshold={0.2}
+                    rootMargin="-50px"
+                    // Maintain the same styling as the Text component
                     fontSize={{ base: "lg", md: "xl" }}
                     color={textColor}
                     maxW={{ base: "100%", lg: "100%" }}
-                  >
-                    Book private jets on demand. Experience the luxury, comfort,
-                    and flexibility of flying on your own schedule.
-                  </Text>
+                    textAlign={{ base: "center", lg: "left" }}
+                    as="p" // Maintaining paragraph semantics
+                  />
 
                   <Button
                     size="lg"
