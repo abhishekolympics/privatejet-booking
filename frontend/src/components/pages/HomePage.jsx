@@ -234,8 +234,8 @@ const HomePage = () => {
           height="100%"
           alignItems="center"
           bgGradient={useColorModeValue(
-            "linear(to-r, rgba(0,0,0,0.7) 65%, rgba(0,0,0,0.8) 100%)",
-            "linear(to-r, rgba(0,0,0,0.8) 65%, rgba(0,0,0,0.9) 100%)"
+            "linear(to-r, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.7) 80%, rgba(0,0,0,0.8) 100%)",
+            "linear(to-r, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.8) 65%, rgba(0,0,0,0.9) 100%)"
           )}
         >
           <Container maxW="95%" height="100%" py={10}>
