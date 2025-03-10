@@ -1,7 +1,23 @@
 // controllers/userController.js
-const User = require('../models/User');
-const asyncHandler = require('express-async-handler');
-const logger = require('../utils/logger');
+const User = require("../models/User");
+const asyncHandler = require("express-async-handler");
+const logger = require("../utils/logger");
+
+// @desc    Get current user profile
+// @route   GET /api/users/me
+// @access  Private
+exports.getUserProfile = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.user.id).select("-password");
+
+  if (!user) {
+    return next(new ErrorResponse("User not found", 404));
+  }
+
+  res.status(200).json({
+    success: true,
+    data: user,
+  });
+});
 
 /**
  * @desc    Update user profile
@@ -9,20 +25,14 @@ const logger = require('../utils/logger');
  * @access  Private
  */
 exports.updateProfile = asyncHandler(async (req, res) => {
-  const {
-    firstName,
-    lastName,
-    phone,
-    company,
-    preferences
-  } = req.body;
+  const { firstName, lastName, phone, company, preferences } = req.body;
 
   // Find user
   const user = await User.findById(req.user.id);
 
   if (!user) {
     res.status(404);
-    throw new Error('User not found');
+    throw new Error("User not found");
   }
 
   // Update fields if provided
@@ -30,12 +40,12 @@ exports.updateProfile = asyncHandler(async (req, res) => {
   if (lastName) user.lastName = lastName;
   if (phone) user.phone = phone;
   if (company) user.company = company;
-  
+
   // Update preferences if provided
   if (preferences) {
     user.preferences = {
       ...user.preferences,
-      ...preferences
+      ...preferences,
     };
   }
 
@@ -51,7 +61,7 @@ exports.updateProfile = asyncHandler(async (req, res) => {
     phone: user.phone,
     company: user.company,
     role: user.role,
-    preferences: user.preferences
+    preferences: user.preferences,
   });
 });
 
@@ -61,36 +71,30 @@ exports.updateProfile = asyncHandler(async (req, res) => {
  * @access  Private
  */
 exports.addPaymentMethod = asyncHandler(async (req, res) => {
-  const {
-    type,
-    cardNumber,
-    expiryDate,
-    nameOnCard,
-    isDefault
-  } = req.body;
+  const { type, cardNumber, expiryDate, nameOnCard, isDefault } = req.body;
 
   // Find user
   const user = await User.findById(req.user.id);
 
   if (!user) {
     res.status(404);
-    throw new Error('User not found');
+    throw new Error("User not found");
   }
 
   // Create new payment method
   const newPaymentMethod = {
-    type: type || 'card',
-    lastFour: cardNumber ? cardNumber.slice(-4) : '0000',
+    type: type || "card",
+    lastFour: cardNumber ? cardNumber.slice(-4) : "0000",
     expiryDate,
     isDefault: isDefault || false,
-    tokenId: 'tok_' + Date.now() // In a real app, this would be a token from a payment provider
+    tokenId: "tok_" + Date.now(), // In a real app, this would be a token from a payment provider
   };
 
   // If this is the first payment method or it's set as default
   if (newPaymentMethod.isDefault) {
     // Set all existing payment methods to not default
     if (user.paymentMethods && user.paymentMethods.length > 0) {
-      user.paymentMethods.forEach(method => {
+      user.paymentMethods.forEach((method) => {
         method.isDefault = false;
       });
     }
@@ -104,7 +108,7 @@ exports.addPaymentMethod = asyncHandler(async (req, res) => {
 
   res.status(201).json({
     success: true,
-    paymentMethods: user.paymentMethods
+    paymentMethods: user.paymentMethods,
   });
 });
 
@@ -119,7 +123,7 @@ exports.getPaymentMethods = asyncHandler(async (req, res) => {
 
   if (!user) {
     res.status(404);
-    throw new Error('User not found');
+    throw new Error("User not found");
   }
 
   res.status(200).json(user.paymentMethods);
@@ -136,17 +140,17 @@ exports.deletePaymentMethod = asyncHandler(async (req, res) => {
 
   if (!user) {
     res.status(404);
-    throw new Error('User not found');
+    throw new Error("User not found");
   }
 
   // Find payment method index
   const paymentMethodIndex = user.paymentMethods.findIndex(
-    method => method._id.toString() === req.params.id
+    (method) => method._id.toString() === req.params.id
   );
 
   if (paymentMethodIndex === -1) {
     res.status(404);
-    throw new Error('Payment method not found');
+    throw new Error("Payment method not found");
   }
 
   // Remove payment method
@@ -157,8 +161,8 @@ exports.deletePaymentMethod = asyncHandler(async (req, res) => {
 
   res.status(200).json({
     success: true,
-    message: 'Payment method removed',
-    paymentMethods: user.paymentMethods
+    message: "Payment method removed",
+    paymentMethods: user.paymentMethods,
   });
 });
 
@@ -175,7 +179,7 @@ exports.updatePaymentMethod = asyncHandler(async (req, res) => {
 
   if (!user) {
     res.status(404);
-    throw new Error('User not found');
+    throw new Error("User not found");
   }
 
   // Find payment method
@@ -183,16 +187,16 @@ exports.updatePaymentMethod = asyncHandler(async (req, res) => {
 
   if (!paymentMethod) {
     res.status(404);
-    throw new Error('Payment method not found');
+    throw new Error("Payment method not found");
   }
 
   // Update fields
   if (expiryDate) paymentMethod.expiryDate = expiryDate;
-  
+
   // Handle default payment method
   if (isDefault && !paymentMethod.isDefault) {
     // Set all to false first
-    user.paymentMethods.forEach(method => {
+    user.paymentMethods.forEach((method) => {
       method.isDefault = false;
     });
     // Set this one to default
@@ -204,6 +208,6 @@ exports.updatePaymentMethod = asyncHandler(async (req, res) => {
 
   res.status(200).json({
     success: true,
-    paymentMethods: user.paymentMethods
+    paymentMethods: user.paymentMethods,
   });
 });
