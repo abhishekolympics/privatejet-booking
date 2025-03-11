@@ -18,7 +18,7 @@ import {
   useToast
 } from '@chakra-ui/react';
 import { useQuery } from 'react-query';
-import { searchAircraft } from '../../utils/api';
+import { searchAircraft, getCharterPrice } from '../../utils/api';
 import { useBooking } from '../../hooks/useBooking';
 import AircraftCard from './AircraftCard';
 import NoResults from '../ui/NoResults';
@@ -26,7 +26,7 @@ import NoResults from '../ui/NoResults';
 const AircraftResults = () => {
   const router = useNavigate();
   const toast = useToast();
-  const { bookingDetails, setSelectedAircraft, setChartedPrice } = useBooking();
+  const { bookingDetails, setSelectedAircraft, setCharteredPrice } = useBooking();
   
   const [aircrafts, setAircrafts] = useState([]);
   const [sortBy, setSortBy] = useState('default');
@@ -102,28 +102,28 @@ const AircraftResults = () => {
     setSelectedAircraft(aircraft);
     
     // Get price estimate for the selected aircraft
-    // getChartedPrice({
-    //   ...bookingDetails,
-    //   aircraft: [
-    //     {
-    //       id: aircraft.id
-    //     }
-    //   ]
-    // })
-    //   .then(priceData => {
-    //     setChartedPrice(priceData);
-    //     // Navigate to booking confirmation page
-    //     router('/booking-confirmation');
-    //   })
-    //   .catch(error => {
-    //     toast({
-    //       title: 'Error fetching price',
-    //       description: error.message || 'Please try again later',
-    //       status: 'error',
-    //       duration: 5000,
-    //       isClosable: true,
-    //     });
-    //   });
+    getCharterPrice({
+      ...bookingDetails,
+      aircraft: [
+        {
+          id: aircraft.id
+        }
+      ]
+    })
+      .then(priceData => {
+        setCharteredPrice(priceData);
+        // Navigate to booking confirmation page
+        router('/booking-confirmation');
+      })
+      .catch(error => {
+        toast({
+          title: 'Error fetching price',
+          description: error.message || 'Please try again later',
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+        });
+      });
   };
   
   if (isLoading) {
