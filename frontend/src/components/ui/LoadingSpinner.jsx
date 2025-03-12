@@ -1,4 +1,3 @@
-// 2. frontend/src/components/ui/LoadingSpinner.jsx
 import React from 'react';
 import { Flex, Spinner, Text } from '@chakra-ui/react';
 
