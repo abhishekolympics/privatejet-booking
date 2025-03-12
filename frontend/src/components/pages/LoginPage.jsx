@@ -1,4 +1,4 @@
-// src/components/pages/LoginPage.jsx
+// src/components/pages/LoginPage.jsx - Updated for Password Reset
 
 import React, { useState, useEffect } from 'react';
 import { 
@@ -16,7 +16,8 @@ import {
   AlertIcon,
   InputGroup,
   InputRightElement,
-  IconButton
+  IconButton,
+  Flex
 } from '@chakra-ui/react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
@@ -54,8 +55,6 @@ const LoginPage = () => {
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
-
-  // src/components/pages/LoginPage.jsx (continued)
 
   return (
     <Container maxW="md" py={10}>
@@ -113,6 +112,18 @@ const LoginPage = () => {
                 </InputRightElement>
               </InputGroup>
             </FormControl>
+            
+            {/* Forgot Password Link */}
+            <Flex justify="flex-end" width="100%">
+              <ChakraLink 
+                as={Link} 
+                to="/forgot-password"
+                color="brand.500"
+                fontSize="sm"
+              >
+                Forgot password?
+              </ChakraLink>
+            </Flex>
             
             <Button 
               type="submit" 
