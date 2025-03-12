@@ -1,5 +1,3 @@
-// components/booking/AircraftResults.jsx - Display available aircraft search results
-
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
@@ -22,22 +20,33 @@ import { searchAircraft, getCharterPrice } from '../../utils/api';
 import { useBooking } from '../../hooks/useBooking';
 import AircraftCard from './AircraftCard';
 import NoResults from '../ui/NoResults';
+import LoadingSpinner from '../ui/LoadingSpinner';
 
 const AircraftResults = () => {
-  const router = useNavigate();
+  const navigate = useNavigate();
   const toast = useToast();
   const { bookingDetails, setSelectedAircraft, setCharteredPrice } = useBooking();
   
   const [aircrafts, setAircrafts] = useState([]);
   const [sortBy, setSortBy] = useState('default');
   const [filterByClass, setFilterByClass] = useState('');
+  const [searchParams, setSearchParams] = useState(null);
   
-  // Fetch available aircraft based on booking details
-  const { data, isLoading, isError } = useQuery(
-    ['aircraftSearch', bookingDetails], 
-    () => searchAircraft(bookingDetails),
+  // Set initial search parameters from booking details
+  useEffect(() => {
+    if (bookingDetails && bookingDetails.legs && bookingDetails.legs.length > 0) {
+      setSearchParams({
+        ...bookingDetails
+      });
+    }
+  }, [bookingDetails]);
+  
+  // Fetch available aircraft based on search params
+  const { data, isLoading, isError, refetch } = useQuery(
+    ['aircraftSearch', searchParams], 
+    () => searchParams ? searchAircraft(searchParams) : null,
     {
-      enabled: !!bookingDetails && !!bookingDetails.legs && bookingDetails.legs.length > 0,
+      enabled: !!searchParams,
       onSuccess: (data) => {
         if (data && data.aircraft) {
           setAircrafts(data.aircraft);
@@ -58,9 +67,9 @@ const AircraftResults = () => {
   useEffect(() => {
     // Redirect to booking page if no booking details exist
     if (!bookingDetails || !bookingDetails.legs || bookingDetails.legs.length === 0) {
-      router('/booking');
+      navigate('/booking');
     }
-  }, [bookingDetails, router]);
+  }, [bookingDetails, navigate]);
   
   const handleSortChange = (e) => {
     setSortBy(e.target.value);
@@ -91,17 +100,31 @@ const AircraftResults = () => {
   };
   
   const handleFilterChange = (e) => {
-    setFilterByClass(e.target.value);
+    const newFilterClass = e.target.value;
+    setFilterByClass(newFilterClass);
+    
+    // Update search params with new aircraft class and refetch
+    if (searchParams) {
+      const updatedParams = {
+        ...searchParams,
+        aircraft: [
+          {
+            ac_class: newFilterClass || (bookingDetails.aircraft?.[0]?.ac_class || '')
+          }
+        ]
+      };
+      
+      setSearchParams(updatedParams);
+    }
   };
-  
-  const filteredAircrafts = filterByClass 
-    ? aircrafts.filter(aircraft => aircraft.aircraft_type.toLowerCase().includes(filterByClass.toLowerCase()))
-    : aircrafts;
   
   const handleSelectAircraft = (aircraft) => {
     setSelectedAircraft(aircraft);
     
-    // Get price estimate for the selected aircraft
+    // For demo purposes, navigate directly to confirmation
+    navigate('/booking-confirmation');
+    
+    // In a real application, you would get price estimation first:
     getCharterPrice({
       ...bookingDetails,
       aircraft: [
@@ -112,8 +135,7 @@ const AircraftResults = () => {
     })
       .then(priceData => {
         setCharteredPrice(priceData);
-        // Navigate to booking confirmation page
-        router('/booking-confirmation');
+        navigate('/booking-confirmation');
       })
       .catch(error => {
         toast({
@@ -127,15 +149,10 @@ const AircraftResults = () => {
   };
   
   if (isLoading) {
-    return (
-      <Flex justify="center" align="center" height="50vh" direction="column">
-        <Spinner size="xl" color="brand.500" thickness="4px" />
-        <Text mt={4} fontSize="lg">Searching for available aircraft...</Text>
-      </Flex>
-    );
+    return <LoadingSpinner text="Searching for available aircraft..." />;
   }
   
-  if (isError || !filteredAircrafts.length) {
+  if (isError || !aircrafts.length) {
     return (
       <NoResults 
         title="No Aircraft Found"
@@ -172,14 +189,14 @@ const AircraftResults = () => {
       </Flex>
       
       <Text mb={6} fontSize="md">
-        Found <Badge colorScheme="brand">{filteredAircrafts.length}</Badge> aircraft for your trip
+        Found <Badge colorScheme="brand">{aircrafts.length}</Badge> aircraft for your trip
       </Text>
       
       <Grid 
         templateColumns={{ base: "1fr", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }}
         gap={6}
       >
-        {filteredAircrafts.map(aircraft => (
+        {aircrafts.map(aircraft => (
           <AircraftCard
             key={aircraft.id}
             aircraft={aircraft}
