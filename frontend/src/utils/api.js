@@ -1,4 +1,4 @@
-// utils/api.js - API utilities for frontend
+// utils/api.js - API utilities for frontend (updated for password reset)
 
 import axios from 'axios';
 
@@ -47,6 +47,22 @@ export const logoutUser = () => {
 
 export const getCurrentUser = async () => {
   const response = await api.get('/auth/me');
+  return response.data;
+};
+
+// Password Reset API calls
+export const forgotPassword = async (email) => {
+  const response = await api.post('/auth/forgot-password', { email });
+  return response.data;
+};
+
+export const resetPassword = async (resetToken, password) => {
+  const response = await api.post(`/auth/reset-password/${resetToken}`, { password });
+  return response.data;
+};
+
+export const changePassword = async (currentPassword, newPassword) => {
+  const response = await api.put('/auth/change-password', { currentPassword, newPassword });
   return response.data;
 };
 

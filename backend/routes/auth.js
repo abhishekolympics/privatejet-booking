@@ -1,4 +1,4 @@
-// routes/auth.js
+// routes/auth.js - Updated for Password Reset
 const express = require('express');
 const router = express.Router();
 const {
@@ -10,13 +10,13 @@ const {
   changePassword
 } = require('../controllers/authController');
 const { protect } = require('../middleware/auth');
-const { validateRegistration, validateLogin } = require('../middleware/validators');
+const { validateRegistration, validateLogin, validatePasswordReset } = require('../middleware/validators');
 
 // Public routes
 router.post('/register', validateRegistration, register);
 router.post('/login', validateLogin, login);
 router.post('/forgot-password', forgotPassword);
-router.put('/reset-password/:resetToken', resetPassword);
+router.post('/reset-password/:resetToken', validatePasswordReset, resetPassword);
 
 // Private routes
 router.get('/me', protect, getMe);

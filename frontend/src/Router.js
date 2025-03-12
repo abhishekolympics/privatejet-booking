@@ -1,4 +1,4 @@
-// src/Router.js
+// src/Router.js - Updated for Password Reset
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from './components/routing/PrivateRoute';
@@ -8,6 +8,8 @@ import HomePage from './components/pages/HomePage';
 import AboutPage from './components/pages/AboutPage';
 import LoginPage from './components/pages/LoginPage';
 import RegisterPage from './components/pages/RegisterPage';
+import ForgotPasswordPage from './components/pages/ForgotPasswordPage';
+import ResetPasswordPage from './components/pages/ResetPasswordPage';
 import BookingPage from './components/pages/BookingPage';
 import AircraftSelectionPage from './components/pages/AircraftSelectionPage';
 import BookingConfirmationPage from './components/pages/BookingConfirmationPage';
@@ -37,6 +39,8 @@ const AppRouter = () => {
       <Route path="/aircraft-management" element={<AircraftManagementPage />} />
       <Route path="/concierge" element={<ConciergeServicesPage />} />
       <Route path="/contact" element={<ContactPage />} />
+      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+      <Route path="/reset-password/:resetToken" element={<ResetPasswordPage />} />
       
       {/* Protected Routes */}
       <Route path="/booking" element={

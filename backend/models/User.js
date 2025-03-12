@@ -1,8 +1,8 @@
-// models/User.js - Mongoose model for users
-
+// models/User.js - Mongoose model for users (with password reset functionality)
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
 
 const UserSchema = new mongoose.Schema({
   firstName: {
@@ -115,8 +115,8 @@ UserSchema.pre('save', async function(next) {
 UserSchema.methods.getSignedJwtToken = function() {
   return jwt.sign(
     { id: this._id, role: this.role },
-    process.env.JWT_SECRET,
-    { expiresIn: process.env.JWT_EXPIRE }
+    process.env.JWT_SECRET || 'your-jwt-secret-key',
+    { expiresIn: process.env.JWT_EXPIRE || '30d' }
   );
 };
 
