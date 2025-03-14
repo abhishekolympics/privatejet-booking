@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -152,11 +152,43 @@ const BookingForm = ({ destinationAirport }) => {
     setFormSubmitted(true);
 
     // Check if all required fields are filled
-    const allFieldsValid = legs.every(
-      (leg) => leg.departureAirport && leg.arrivalAirport
-    );
+    const missingFields = [];
 
-    if (!allFieldsValid) {
+    // Check airports for each leg
+    legs.forEach((leg, index) => {
+      if (!leg.departureAirport) {
+        missingFields.push(
+          `Departure airport`
+        );
+      }
+      if (!leg.arrivalAirport) {
+        missingFields.push(
+          `Arrival airport`
+        );
+      }
+    });
+
+    // Check if aircraft class is selected
+    if (!data.aircraftClass) {
+      missingFields.push("Aircraft class");
+    }
+
+    if (missingFields.length > 0) {
+      // Show toast with missing fields
+      toast({
+        title: "Missing information",
+        description: (
+          <>
+            Please fill in the following: 
+            <br />
+            {missingFields.join(", ")}
+          </>
+        ),
+        position: "top-right",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
       return; // Stop submission if validation fails
     }
 
