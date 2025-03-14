@@ -1,21 +1,21 @@
 // utils/api.js - API utilities for frontend (updated for password reset)
 
-import axios from 'axios';
+import axios from "axios";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 
 // Create axios instance
 const api = axios.create({
   baseURL: API_URL,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
 // Add request interceptor to attach auth token
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -26,43 +26,48 @@ api.interceptors.request.use(
 
 // Authentication API calls
 export const registerUser = async (userData) => {
-  const response = await api.post('/auth/register', userData);
+  const response = await api.post("/auth/register", userData);
   return response.data;
 };
 
 export const loginUser = async (credentials) => {
-  const response = await api.post('/auth/login', credentials);
-  
+  const response = await api.post("/auth/login", credentials);
+
   // Store token in localStorage
   if (response.data.token) {
-    localStorage.setItem('token', response.data.token);
+    localStorage.setItem("token", response.data.token);
   }
-  
+
   return response.data;
 };
 
 export const logoutUser = () => {
-  localStorage.removeItem('token');
+  localStorage.removeItem("token");
 };
 
 export const getCurrentUser = async () => {
-  const response = await api.get('/auth/me');
+  const response = await api.get("/auth/me");
   return response.data;
 };
 
 // Password Reset API calls
 export const forgotPassword = async (email) => {
-  const response = await api.post('/auth/forgot-password', { email });
+  const response = await api.post("/auth/forgot-password", { email });
   return response.data;
 };
 
 export const resetPassword = async (resetToken, password) => {
-  const response = await api.post(`/auth/reset-password/${resetToken}`, { password });
+  const response = await api.post(`/auth/reset-password/${resetToken}`, {
+    password,
+  });
   return response.data;
 };
 
 export const changePassword = async (currentPassword, newPassword) => {
-  const response = await api.put('/auth/change-password', { currentPassword, newPassword });
+  const response = await api.put("/auth/change-password", {
+    currentPassword,
+    newPassword,
+  });
   return response.data;
 };
 
@@ -73,17 +78,17 @@ export const searchAirports = async (term) => {
 };
 
 export const getAircraftClasses = async () => {
-  const response = await api.get('/aviapages/aircraft-classes');
+  const response = await api.get("/aviapages/aircraft-classes");
   return response.data;
 };
 
 export const getCharterPrice = async (data) => {
-  const response = await api.post('/aviapages/charter-price', data);
+  const response = await api.post("/aviapages/charter-price", data);
   return response.data;
 };
 
 export const searchAircraft = async (data) => {
-  const response = await api.post('/aviapages/search-aircraft', data);
+  const response = await api.post("/aviapages/search-aircraft", data);
   return response.data;
 };
 
@@ -93,18 +98,18 @@ export const getAircraftDetails = async (id) => {
 };
 
 export const createQuote = async (data) => {
-  const response = await api.post('/aviapages/create-quote', data);
+  const response = await api.post("/aviapages/create-quote", data);
   return response.data;
 };
 
 // Booking API calls
 export const createBooking = async (bookingData) => {
-  const response = await api.post('/bookings', bookingData);
+  const response = await api.post("/bookings", bookingData);
   return response.data;
 };
 
 export const getUserBookings = async () => {
-  const response = await api.get('/bookings');
+  const response = await api.get("/bookings");
   return response.data;
 };
 
@@ -125,18 +130,80 @@ export const cancelBooking = async (id) => {
 
 // User profile API calls
 export const updateUserProfile = async (userData) => {
-  const response = await api.patch('/users/me', userData);
+  const response = await api.patch("/users/me", userData);
   return response.data;
 };
 
 export const addPaymentMethod = async (paymentData) => {
-  const response = await api.post('/users/payment-methods', paymentData);
+  const response = await api.post("/users/payment-methods", paymentData);
   return response.data;
 };
 
 export const getPaymentMethods = async () => {
-  const response = await api.get('/users/payment-methods');
+  const response = await api.get("/users/payment-methods");
   return response.data;
+};
+
+// Fetch all partners
+export const fetchPartners = async () => {
+  try {
+    const response = await api.get("/partners");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching partners:", error);
+    throw error;
+  }
+};
+
+// Fetch a single partner by ID
+export const fetchPartnerById = async (partnerId) => {
+  try {
+    const response = await api.get(`/partners/${partnerId}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching partner with ID ${partnerId}:`, error);
+    throw error;
+  }
+};
+
+// Filter partners by type
+export const fetchPartnersByType = async (partnerType) => {
+  try {
+    const response = await api.get("/partners", {
+      params: { partnerType },
+    });
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching partners of type ${partnerType}:`, error);
+    throw error;
+  }
+};
+
+// Search partners by keyword
+export const searchPartners = async (searchTerm) => {
+  try {
+    const response = await api.get("/partners/search", {
+      params: { q: searchTerm },
+    });
+    return response.data;
+  } catch (error) {
+    console.error(`Error searching partners with term "${searchTerm}":`, error);
+    throw error;
+  }
+};
+
+// Contact a partner
+export const contactPartner = async (partnerId, contactData) => {
+  try {
+    const response = await api.post(
+      `/partners/${partnerId}/contact`,
+      contactData
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error sending contact request to partner:", error);
+    throw error;
+  }
 };
 
 export default api;
