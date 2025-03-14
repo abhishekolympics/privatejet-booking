@@ -473,24 +473,50 @@ const MobileNavItem = ({ label, children, href, customDark, customLight }) => {
   );
 };
 
+// Update the NAV_ITEMS in your Header.jsx to include a Partners link
+
 const NAV_ITEMS = [
-  { label: "Home", href: "/" },
-  { label: "Book a Jet", href: "/booking" },
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "Book a Jet",
+    href: "/booking",
+  },
   {
     label: "Aircraft",
     href: "#",
     children: [
-      { label: "Light Jets", subLabel: "Short trips", href: "/aircraft/light" },
+      {
+        label: "Light Jets",
+        subLabel: "Ideal for short trips with 4-6 passengers",
+        href: "/aircraft-types/light",
+      },
       {
         label: "Midsize Jets",
-        subLabel: "Medium-range",
-        href: "/aircraft/midsize",
+        subLabel: "Perfect for medium-range trips with 6-8 passengers",
+        href: "/aircraft-types/midsize",
       },
-      { label: "Heavy Jets", subLabel: "Long-haul", href: "/aircraft/heavy" },
+      {
+        label: "Heavy Jets",
+        subLabel: "Designed for long-haul flights with 8-16 passengers",
+        href: "/aircraft-types/heavy",
+      },
     ],
   },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  {
+    label: "Partners", // Add this item
+    href: "/partners",
+  },
+  {
+    label: "About",
+    href: "/about",
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+  },
 ];
 
 export default Header;
