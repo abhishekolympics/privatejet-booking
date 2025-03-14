@@ -18,7 +18,6 @@ import {
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import ExpandablePartnerCard from "../partners/ExpandablePartnerCard";
-import aviaPagesLogo from "../../utils/images/aviapages-logo.png";
 // import { fetchPartners } from '../../utils/api'; // Assuming you'll add this API call
 
 const PartnersPage = () => {
