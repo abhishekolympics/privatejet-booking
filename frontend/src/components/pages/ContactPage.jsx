@@ -50,7 +50,7 @@ const ContactPage = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await axios.post('/api/contact', data);
+      const response = await axios.post('http://localhost:5000/api/contact', data);
       
       toast({
         title: 'Message Sent',
@@ -58,6 +58,7 @@ const ContactPage = () => {
         status: 'success',
         duration: 5000,
         isClosable: true,
+        position: 'top-right',
       });
       
       // Reset form
@@ -92,7 +93,7 @@ const ContactPage = () => {
     setIsSubscribing(true);
     
     try {
-      const response = await axios.post('/api/contact/subscribe', { email: subscribeEmail });
+      const response = await axios.post('http://localhost:5000/api/contact/subscribe', { email: subscribeEmail });
       
       setSubscribeSuccess(true);
       setSubscribeEmail('');
@@ -102,6 +103,7 @@ const ContactPage = () => {
         description: response.data.message || 'Thank you for subscribing to our newsletter!',
         status: 'success',
         duration: 5000,
+        position: 'top-right',
         isClosable: true,
       });
     } catch (error) {
