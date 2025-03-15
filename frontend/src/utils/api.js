@@ -206,4 +206,103 @@ export const contactPartner = async (partnerId, contactData) => {
   }
 };
 
+/**
+ * Get all available empty leg flights
+ * @returns {Promise} Promise with empty leg flights data
+ */
+export const fetchEmptyLegs = async () => {
+  try {
+    const response = await api.get('/empty-legs');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching empty legs:', error);
+    throw error;
+  }
+};
+
+/**
+ * Search for empty legs based on criteria
+ * @param {Object} searchParams - Search parameters
+ * @param {string} searchParams.departure - Departure location (city or airport code)
+ * @param {string} searchParams.arrival - Arrival location (city or airport code)
+ * @param {string} searchParams.date - Minimum departure date
+ * @returns {Promise} Promise with filtered empty leg flights
+ */
+export const searchEmptyLegs = async (searchParams) => {
+  try {
+    const response = await api.get('/empty-legs/search', { params: searchParams });
+    return response.data;
+  } catch (error) {
+    console.error('Error searching empty legs:', error);
+    throw error;
+  }
+};
+
+/**
+ * Book an empty leg flight
+ * @param {string} legId - ID of the empty leg flight
+ * @param {Object} bookingData - Booking details
+ * @returns {Promise} Promise with booking confirmation
+ */
+export const bookEmptyLeg = async (legId, bookingData) => {
+  try {
+    const response = await api.post(`/empty-legs/${legId}/book`, bookingData);
+    return response.data;
+  } catch (error) {
+    console.error('Error booking empty leg:', error);
+    throw error;
+  }
+};
+
+/**
+ * Set up flight alerts for empty legs
+ * @param {Object} alertData - Alert criteria
+ * @param {string} alertData.departure - Departure location
+ * @param {string} alertData.arrival - Arrival location
+ * @param {string} alertData.dateFrom - Start date for alert period
+ * @param {string} alertData.dateTo - End date for alert period
+ * @param {string} alertData.email - Email to receive alerts
+ * @returns {Promise} Promise with alert confirmation
+ */
+export const setUpFlightAlert = async (alertData) => {
+  try {
+    const response = await api.post('/empty-legs/alerts', alertData);
+    return response.data;
+  } catch (error) {
+    console.error('Error setting up flight alert:', error);
+    throw error;
+  }
+};
+
+/**
+ * Get flight alert subscriptions for the logged-in user
+ * @returns {Promise} Promise with user's flight alerts
+ */
+export const getUserFlightAlerts = async () => {
+  try {
+    const response = await api.get('/empty-legs/alerts');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching user flight alerts:', error);
+    throw error;
+  }
+};
+
+/**
+ * Delete a flight alert
+ * @param {string} alertId - ID of the alert to delete
+ * @returns {Promise} Promise with deletion confirmation
+ */
+export const deleteFlightAlert = async (alertId) => {
+  try {
+    const response = await api.delete(`/empty-legs/alerts/${alertId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting flight alert:', error);
+    throw error;
+  }
+};
+
+
+
 export default api;
