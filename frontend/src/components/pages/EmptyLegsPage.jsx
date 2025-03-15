@@ -1,5 +1,5 @@
 // components/pages/EmptyLegsPage.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Container,
@@ -13,109 +13,229 @@ import {
   Flex,
   Icon,
   Input,
-  Select,
   FormControl,
   FormLabel,
   Grid,
   GridItem,
   Badge,
-  useColorModeValue
+  useDisclosure,
+  Alert,
+  AlertIcon,
+  useToast
 } from '@chakra-ui/react';
-import { FaPlane, FaCalendarAlt, FaPercent, FaSearch, FaArrowRight } from 'react-icons/fa';
-
-// Mock data for empty leg flights
-const emptyLegsData = [
-  {
-    id: 1,
-    from: 'New York (KJFK)',
-    to: 'Miami (KMIA)',
-    date: '2025-03-15',
-    aircraft: 'Citation XLS',
-    capacity: '8 passengers',
-    savings: '65%',
-    price: '$4,900'
-  },
-  {
-    id: 2,
-    from: 'London (EGLL)',
-    to: 'Paris (LFPG)',
-    date: '2025-03-10',
-    aircraft: 'Phenom 300',
-    capacity: '6 passengers',
-    savings: '70%',
-    price: '$3,200'
-  },
-  {
-    id: 3,
-    from: 'Los Angeles (KLAX)',
-    to: 'Las Vegas (KLAS)',
-    date: '2025-03-12',
-    aircraft: 'Citation CJ3',
-    capacity: '7 passengers',
-    savings: '55%',
-    price: '$2,800'
-  },
-  {
-    id: 4,
-    from: 'Dubai (OMDB)',
-    to: 'Riyadh (OERK)',
-    date: '2025-03-18',
-    aircraft: 'Gulfstream G450',
-    capacity: '14 passengers',
-    savings: '60%',
-    price: '$9,500'
-  },
-  {
-    id: 5,
-    from: 'Miami (KMIA)',
-    to: 'New York (KJFK)',
-    date: '2025-03-20',
-    aircraft: 'Challenger 350',
-    capacity: '9 passengers',
-    savings: '50%',
-    price: '$7,200'
-  },
-  {
-    id: 6,
-    from: 'Paris (LFPG)',
-    to: 'Geneva (LSGG)',
-    date: '2025-03-11',
-    aircraft: 'Legacy 500',
-    capacity: '12 passengers',
-    savings: '65%',
-    price: '$5,100'
-  }
-];
+import { FaPlane, FaCalendarAlt, FaPercent, FaSearch, FaArrowRight, FaBell } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
+import { 
+  fetchEmptyLegs, 
+  searchEmptyLegs,
+  bookEmptyLeg,
+  setUpFlightAlert
+} from '../../utils/api';
+import LoadingSpinner from '../ui/LoadingSpinner';
+import EmptyLegBookingModal from '../emptylegs/EmptyLegBookingModal';
+import FlightAlertModal from '../emptylegs/FlightAlertModal';
 
 const EmptyLegsPage = () => {
-  const [filteredLegs, setFilteredLegs] = useState(emptyLegsData);
+  const toast = useToast();
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+  const [emptyLegs, setEmptyLegs] = useState([]);
+  const [filteredLegs, setFilteredLegs] = useState([]);
   const [departureFilter, setDepartureFilter] = useState('');
   const [arrivalFilter, setArrivalFilter] = useState('');
   const [dateFilter, setDateFilter] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [selectedLeg, setSelectedLeg] = useState(null);
+  const [isSearching, setIsSearching] = useState(false);
+  
+  // Modals
+  const { 
+    isOpen: isBookingModalOpen, 
+    onOpen: onBookingModalOpen, 
+    onClose: onBookingModalClose 
+  } = useDisclosure();
+  
+  const { 
+    isOpen: isAlertModalOpen, 
+    onOpen: onAlertModalOpen, 
+    onClose: onAlertModalClose 
+  } = useDisclosure();
 
-  const handleSearch = () => {
-    let results = emptyLegsData;
+  // Fetch empty legs on component mount
+  useEffect(() => {
+    const getEmptyLegs = async () => {
+      try {
+        setIsLoading(true);
+        const data = await fetchEmptyLegs();
+        setEmptyLegs(data);
+        setFilteredLegs(data);
+      } catch (err) {
+        setError('Unable to load empty leg flights. Please try again later.');
+        console.error('Error fetching empty legs:', err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    getEmptyLegs();
+  }, []);
+
+  // Handle search
+  const handleSearch = async () => {
+    setIsSearching(true);
     
-    if (departureFilter) {
-      results = results.filter(leg => 
-        leg.from.toLowerCase().includes(departureFilter.toLowerCase())
-      );
+    try {
+      // If all filters are empty, reset to show all
+      if (!departureFilter && !arrivalFilter && !dateFilter) {
+        setFilteredLegs(emptyLegs);
+        setIsSearching(false);
+        return;
+      }
+      
+      // Construct search params
+      const searchParams = {};
+      if (departureFilter) searchParams.departure = departureFilter;
+      if (arrivalFilter) searchParams.arrival = arrivalFilter;
+      if (dateFilter) searchParams.date = dateFilter;
+      
+      // API call
+      const results = await searchEmptyLegs(searchParams);
+      setFilteredLegs(results);
+      
+      // Show message if no results
+      if (results.length === 0) {
+        toast({
+          title: "No flights found",
+          description: "No empty leg flights match your search criteria. Try different search parameters.",
+          status: "info",
+          duration: 5000,
+          isClosable: true,
+        });
+      }
+    } catch (err) {
+      toast({
+        title: "Search Error",
+        description: "There was an error processing your search. Please try again.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+      console.error('Error searching empty legs:', err);
+    } finally {
+      setIsSearching(false);
     }
-    
-    if (arrivalFilter) {
-      results = results.filter(leg => 
-        leg.to.toLowerCase().includes(arrivalFilter.toLowerCase())
-      );
-    }
-    
-    if (dateFilter) {
-      results = results.filter(leg => 
-        leg.date >= dateFilter
-      );
-    }
-    
-    setFilteredLegs(results);
   };
+
+  // Handle book now button click
+  const handleBookNow = (leg) => {
+    if (!isAuthenticated) {
+      toast({
+        title: "Login Required",
+        description: "Please login to book an empty leg flight.",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+      });
+      navigate('/login', { state: { from: { pathname: '/empty-legs' } } });
+      return;
+    }
+    
+    setSelectedLeg(leg);
+    onBookingModalOpen();
+  };
+
+  // Handle flight alert setup
+  const handleSetupAlert = () => {
+    if (!isAuthenticated) {
+      toast({
+        title: "Login Required",
+        description: "Please login to set up flight alerts.",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+      });
+      navigate('/login', { state: { from: { pathname: '/empty-legs' } } });
+      return;
+    }
+    
+    onAlertModalOpen();
+  };
+
+  // Handle booking submission
+  const handleBookingSubmit = async (bookingData) => {
+    try {
+      const response = await bookEmptyLeg(selectedLeg.id, bookingData);
+      
+      toast({
+        title: "Booking Successful",
+        description: "Your empty leg flight has been booked successfully!",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
+      
+      onBookingModalClose();
+      
+      // Navigate to booking confirmation
+      navigate('/booking-confirmation', { state: { bookingData: response } });
+    } catch (err) {
+      toast({
+        title: "Booking Error",
+        description: err.response?.data?.message || "There was an error processing your booking. Please try again.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+  };
+
+  // Handle flight alert submission
+  const handleAlertSubmit = async (alertData) => {
+    try {
+      await setUpFlightAlert(alertData);
+      
+      toast({
+        title: "Alert Set Up",
+        description: "You will receive notifications when matching empty leg flights become available.",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
+      
+      onAlertModalClose();
+    } catch (err) {
+      toast({
+        title: "Error",
+        description: err.response?.data?.message || "There was an error setting up your alert. Please try again.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+  };
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <Container maxW="container.xl" py={10}>
+        <LoadingSpinner text="Loading empty leg flights..." />
+      </Container>
+    );
+  }
+
+  // Show error state
+  if (error) {
+    return (
+      <Container maxW="container.xl" py={10}>
+        <Alert status="error" borderRadius="lg">
+          <AlertIcon />
+          {error}
+        </Alert>
+      </Container>
+    );
+  }
 
   return (
     <Container maxW="container.xl" py={10}>
@@ -286,6 +406,8 @@ const EmptyLegsPage = () => {
                 leftIcon={<FaSearch />}
                 onClick={handleSearch}
                 width="full"
+                isLoading={isSearching}
+                loadingText="Searching"
               >
                 Search
               </Button>
@@ -294,11 +416,27 @@ const EmptyLegsPage = () => {
         </Box>
         
         {/* Results */}
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
-          {filteredLegs.map((leg) => (
-            <EmptyLegCard key={leg.id} leg={leg} />
-          ))}
-        </SimpleGrid>
+        {isSearching ? (
+          <LoadingSpinner text="Searching for flights..." />
+        ) : (
+          <>
+            {filteredLegs.length > 0 ? (
+              <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
+                {filteredLegs.map((leg) => (
+                  <EmptyLegCard 
+                    key={leg.id} 
+                    leg={leg} 
+                    onBookNow={() => handleBookNow(leg)} 
+                  />
+                ))}
+              </SimpleGrid>
+            ) : (
+              <Box textAlign="center" py={10}>
+                <Text fontSize="lg">No empty leg flights found. Try different search criteria.</Text>
+              </Box>
+            )}
+          </>
+        )}
       </Box>
 
       {/* How to Book */}
@@ -345,15 +483,56 @@ const EmptyLegsPage = () => {
           colorScheme="white" 
           variant="outline" 
           _hover={{ bg: 'whiteAlpha.200' }}
+          leftIcon={<FaBell />}
+          onClick={handleSetupAlert}
         >
           Set Up Flight Alerts
         </Button>
       </Box>
+      
+      {/* Modals */}
+      {selectedLeg && (
+        <EmptyLegBookingModal
+          isOpen={isBookingModalOpen}
+          onClose={onBookingModalClose}
+          emptyLeg={selectedLeg}
+          onSubmit={handleBookingSubmit}
+        />
+      )}
+      
+      <FlightAlertModal
+        isOpen={isAlertModalOpen}
+        onClose={onAlertModalClose}
+        onSubmit={handleAlertSubmit}
+        currentDeparture={departureFilter}
+        currentArrival={arrivalFilter}
+      />
     </Container>
   );
 };
 
-const EmptyLegCard = ({ leg }) => {
+const EmptyLegCard = ({ leg, onBookNow }) => {
+  // Format date for display
+  const formatDate = (dateString) => {
+    const options = { weekday: 'short', month: 'short', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString('en-US', options);
+  };
+  
+  // Format time for display
+  const formatTime = (dateString) => {
+    const options = { hour: '2-digit', minute: '2-digit' };
+    return new Date(dateString).toLocaleTimeString('en-US', options);
+  };
+  
+  // Formats price with commas and currency symbol
+  const formatPrice = (price, currency = 'USD') => {
+    return new Intl.NumberFormat('en-US', { 
+      style: 'currency', 
+      currency: currency,
+      maximumFractionDigits: 0 
+    }).format(price);
+  };
+  
   return (
     <Box 
       bg="white" 
@@ -372,27 +551,35 @@ const EmptyLegCard = ({ leg }) => {
         colorScheme="red" 
         fontSize="sm"
       >
-        Save {leg.savings}
+        Save {leg.savingsPercentage}%
       </Badge>
       
       <VStack align="start" spacing={4}>
         <Flex width="100%" justify="space-between" align="center">
-          <Text fontWeight="bold" fontSize="xl">{leg.date}</Text>
-          <Text color="gray.500">{leg.aircraft}</Text>
+          <VStack align="start" spacing={0}>
+            <Text fontWeight="bold" fontSize="lg">{formatDate(leg.departureDateTime)}</Text>
+            <Text color="gray.500" fontSize="sm">{formatTime(leg.departureDateTime)}</Text>
+          </VStack>
+          <Text color="gray.500">{leg.aircraft.type}</Text>
         </Flex>
         
         <Flex width="100%" align="center">
-          <Text fontWeight="bold" fontSize="lg">{leg.from}</Text>
+          <Text fontWeight="bold" fontSize="md">{leg.departureAirport.code}</Text>
           <Icon as={FaArrowRight} mx={2} color="brand.500" />
-          <Text fontWeight="bold" fontSize="lg">{leg.to}</Text>
+          <Text fontWeight="bold" fontSize="md">{leg.arrivalAirport.code}</Text>
         </Flex>
         
         <Flex width="100%" justify="space-between" align="center">
-          <Text>{leg.capacity}</Text>
-          <Heading size="md" color="brand.500">{leg.price}</Heading>
+          <Text>{leg.aircraft.capacity} passengers</Text>
+          <Heading size="md" color="brand.500">{formatPrice(leg.price, leg.currency)}</Heading>
         </Flex>
         
-        <Button colorScheme="brand" size="sm" width="full">
+        <Button 
+          colorScheme="brand" 
+          size="sm" 
+          width="full"
+          onClick={onBookNow}
+        >
           Book Now
         </Button>
       </VStack>
