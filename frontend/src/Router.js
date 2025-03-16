@@ -21,6 +21,7 @@ import CareerPage from './components/pages/CareerPage';
 import PartnersPage from './components/pages/PartnersPage';
 import EmptyLegsPage from './components/pages/EmptyLegsPage';
 import AircraftTypesPage from './components/pages/AircraftTypesPage';
+import AircraftDetailsPage from './components/pages/AircraftDetailsPage';
 import AircraftManagementPage from './components/pages/AircraftManagementPage';
 import ConciergeServicesPage from './components/pages/ConciergeServicesPage';
 
@@ -41,6 +42,8 @@ const AppRouter = () => {
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/reset-password/:resetToken" element={<ResetPasswordPage />} />
+      <Route path="/aircraft-types" element={<AircraftTypesPage />} />
+      <Route path="/aircraft/:id" element={<AircraftDetailsPage />} />
       
       {/* Protected Routes */}
       <Route path="/booking" element={

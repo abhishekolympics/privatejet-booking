@@ -1,0 +1,258 @@
+[
+    {
+      "id": 3001,
+      "registration_number": "N350CL",
+      "year_of_production": 2021,
+      "passengers_max": 9,
+      "aircraft_type": {
+        "id": 101,
+        "name": "Challenger 350",
+        "icao": "CL35"
+      },
+      "company": {
+        "id": 127,
+        "name": "East Coast Aviation",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 3001,
+            "path": "/images/aircraft/challenger-350-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 3002,
+            "path": "/images/aircraft/challenger-350-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": true,
+        "lavatory": true,
+        "hot_meal": true,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": true,
+        "cabin_height": 1.85,
+        "cabin_width": 2.2,
+        "cabin_length": 8.5,
+        "luggage_volume": 9.8,
+        "description": "The Bombardier Challenger 350 is a super-midsize jet that offers an unparalleled combination of performance and comfort. With its flat floor, stand-up cabin, and exceptional range, it's ideal for transcontinental journeys."
+      }
+    },
+    {
+      "id": 3002,
+      "registration_number": "N800CL",
+      "year_of_production": 2019,
+      "passengers_max": 12,
+      "aircraft_type": {
+        "id": 102,
+        "name": "Citation Longitude",
+        "icao": "C700"
+      },
+      "company": {
+        "id": 128,
+        "name": "Premium Jets",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 3003,
+            "path": "/images/aircraft/citation-longitude-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 3004,
+            "path": "/images/aircraft/citation-longitude-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": true,
+        "lavatory": true,
+        "hot_meal": true,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": true,
+        "cabin_height": 1.83,
+        "cabin_width": 2.08,
+        "cabin_length": 7.6,
+        "luggage_volume": 8.9,
+        "description": "The Citation Longitude sets the standard for super-midsize jets with best-in-class cabin comfort, quietness, and technology. Its spacious interior, impressive range, and advanced features make it perfect for both business and leisure travel."
+      }
+    },
+    {
+      "id": 3003,
+      "registration_number": "N700LX",
+      "year_of_production": 2020,
+      "passengers_max": 8,
+      "aircraft_type": {
+        "id": 103,
+        "name": "Legacy 500",
+        "icao": "E550"
+      },
+      "company": {
+        "id": 129,
+        "name": "Executive Flights",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 3005,
+            "path": "/images/aircraft/legacy-500-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 3006,
+            "path": "/images/aircraft/legacy-500-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": true,
+        "lavatory": true,
+        "hot_meal": true,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": true,
+        "cabin_height": 1.82,
+        "cabin_width": 2.1,
+        "cabin_length": 8.05,
+        "luggage_volume": 7.8,
+        "description": "The Embraer Legacy 500 offers exceptional comfort and technology with a stand-up cabin, flat floor, and advanced digital flight controls. Its transcontinental range and impressive performance make it a leader in the super-midsize category."
+      }
+    },
+    {
+      "id": 3004,
+      "registration_number": "N650XT",
+      "year_of_production": 2018,
+      "passengers_max": 9,
+      "aircraft_type": {
+        "id": 104,
+        "name": "Citation X+",
+        "icao": "C750"
+      },
+      "company": {
+        "id": 130,
+        "name": "Velocity Jets",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 3007,
+            "path": "/images/aircraft/citation-x-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 3008,
+            "path": "/images/aircraft/citation-x-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": true,
+        "lavatory": true,
+        "hot_meal": true,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": true,
+        "cabin_height": 1.73,
+        "cabin_width": 1.95,
+        "cabin_length": 7.7,
+        "luggage_volume": 6.8,
+        "description": "The Citation X+ is one of the fastest civilian jets in the world with a maximum speed of Mach 0.935. This super-midsize jet combines speed with luxury and offers an impressive range, making it perfect for transcontinental business travel."
+      }
+    },
+    {
+      "id": 3005,
+      "registration_number": "N780GA",
+      "year_of_production": 2022,
+      "passengers_max": 10,
+      "aircraft_type": {
+        "id": 105,
+        "name": "Gulfstream G280",
+        "icao": "G280"
+      },
+      "company": {
+        "id": 131,
+        "name": "Elite Air Services",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 3009,
+            "path": "/images/aircraft/g280-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 3010,
+            "path": "/images/aircraft/g280-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": true,
+        "lavatory": true,
+        "hot_meal": true,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": true,
+        "pets_allowed": true,
+        "cabin_height": 1.91,
+        "cabin_width": 2.18,
+        "cabin_length": 7.87,
+        "luggage_volume": 8.5,
+        "description": "The Gulfstream G280 redefines the super-midsize category with its best-in-class range, speed, and cabin comfort. With exceptional fuel efficiency and the ability to access challenging airports, it offers unmatched versatility for business travelers."
+      }
+    }
+  ]

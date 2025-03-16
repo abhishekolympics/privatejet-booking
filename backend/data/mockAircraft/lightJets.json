@@ -1,0 +1,257 @@
+[
+    {
+      "id": 1001,
+      "registration_number": "N123CJ",
+      "year_of_production": 2020,
+      "passengers_max": 7,
+      "aircraft_type": {
+        "id": 201,
+        "name": "Citation CJ4",
+        "icao": "CJ4"
+      },
+      "company": {
+        "id": 221,
+        "name": "Executive Air Charters",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 1001,
+            "path": "/images/aircraft/citation-cj4-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 1002,
+            "path": "/images/aircraft/citation-cj4-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": false,
+        "lavatory": true,
+        "hot_meal": false,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": false,
+        "cabin_height": 1.49,
+        "cabin_width": 1.47,
+        "cabin_length": 5.28,
+        "luggage_volume": 6.36,
+        "description": "The Cessna Citation CJ4 is a versatile light jet offering exceptional performance and comfort for short to medium-range flights. With its spacious cabin and advanced avionics, it provides an efficient and comfortable travel experience."
+      }
+    },
+    {
+      "id": 1002,
+      "registration_number": "N456PH",
+      "year_of_production": 2021,
+      "passengers_max": 8,
+      "aircraft_type": {
+        "id": 202,
+        "name": "Phenom 300",
+        "icao": "E55P"
+      },
+      "company": {
+        "id": 222,
+        "name": "Sky Charter Services",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 1003,
+            "path": "/images/aircraft/phenom-300-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 1004,
+            "path": "/images/aircraft/phenom-300-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": false,
+        "lavatory": true,
+        "hot_meal": false,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": false,
+        "cabin_height": 1.5,
+        "cabin_width": 1.55,
+        "cabin_length": 5.23,
+        "luggage_volume": 5.9,
+        "description": "The Embraer Phenom 300 is a popular light jet known for its exceptional performance and cabin comfort. With best-in-class cabin pressurization and low operating costs, it offers an optimal combination of luxury and efficiency."
+      }
+    },
+    {
+      "id": 1003,
+      "registration_number": "N789HJ",
+      "year_of_production": 2019,
+      "passengers_max": 5,
+      "aircraft_type": {
+        "id": 203,
+        "name": "HondaJet Elite",
+        "icao": "HDJT"
+      },
+      "company": {
+        "id": 223,
+        "name": "Premier Jets",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 1005,
+            "path": "/images/aircraft/hondajet-elite-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 1006,
+            "path": "/images/aircraft/hondajet-elite-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": false,
+        "lavatory": true,
+        "hot_meal": false,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": false,
+        "cabin_height": 1.47,
+        "cabin_width": 1.52,
+        "cabin_length": 4.8,
+        "luggage_volume": 4.1,
+        "description": "The HondaJet Elite is a revolutionary light jet with innovative design features, including over-the-wing engine mounts that maximize cabin space and improve fuel efficiency. It offers exceptional performance and comfort in its class."
+      }
+    },
+    {
+      "id": 1004,
+      "registration_number": "N101LJ",
+      "year_of_production": 2018,
+      "passengers_max": 6,
+      "aircraft_type": {
+        "id": 204,
+        "name": "Learjet 75 Liberty",
+        "icao": "LJ75"
+      },
+      "company": {
+        "id": 224,
+        "name": "Altitude Aviation",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 1007,
+            "path": "/images/aircraft/learjet-75-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 1008,
+            "path": "/images/aircraft/learjet-75-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": false,
+        "lavatory": true,
+        "hot_meal": false,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": false,
+        "cabin_height": 1.5,
+        "cabin_width": 1.56,
+        "cabin_length": 5.85,
+        "luggage_volume": 4.5,
+        "description": "The Learjet 75 Liberty is renowned for its impressive performance capabilities, including exceptional climb rates and high-speed cruise. Its spacious cabin and extended range make it an ideal choice for executive travel."
+      }
+    },
+    {
+      "id": 1005,
+      "registration_number": "N202PC",
+      "year_of_production": 2022,
+      "passengers_max": 6,
+      "aircraft_type": {
+        "id": 205,
+        "name": "Pilatus PC-24",
+        "icao": "PC24"
+      },
+      "company": {
+        "id": 225,
+        "name": "Swiss Air Charter",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 1009,
+            "path": "/images/aircraft/pc-24-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 1010,
+            "path": "/images/aircraft/pc-24-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": false,
+        "lavatory": true,
+        "hot_meal": false,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": false,
+        "cabin_height": 1.55,
+        "cabin_width": 1.69,
+        "cabin_length": 7.01,
+        "luggage_volume": 7.0,
+        "description": "The Pilatus PC-24 is the world's first 'Super Versatile Jet' capable of landing on short unpaved runways. It combines the versatility of a turboprop with the cabin size of a midsize jet and the performance of a light jet."
+      }
+    }
+  ]

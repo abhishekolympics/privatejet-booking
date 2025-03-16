@@ -1,0 +1,257 @@
+[
+    {
+      "id": 2001,
+      "registration_number": "N550XL",
+      "year_of_production": 2020,
+      "passengers_max": 9,
+      "aircraft_type": {
+        "id": 301,
+        "name": "Citation XLS+",
+        "icao": "C56X"
+      },
+      "company": {
+        "id": 321,
+        "name": "Liberty Jets",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 2001,
+            "path": "/images/aircraft/citation-xls-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 2002,
+            "path": "/images/aircraft/citation-xls-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": true,
+        "lavatory": true,
+        "hot_meal": true,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": false,
+        "cabin_height": 1.73,
+        "cabin_width": 1.68,
+        "cabin_length": 5.64,
+        "luggage_volume": 7.6,
+        "description": "The Citation XLS+ combines the comfort and luxury of a midsize jet with remarkable short-field performance. Its spacious stand-up cabin, excellent range, and impressive speed make it one of the most popular midsize jets in the world."
+      }
+    },
+    {
+      "id": 2002,
+      "registration_number": "N60XR",
+      "year_of_production": 2018,
+      "passengers_max": 8,
+      "aircraft_type": {
+        "id": 302,
+        "name": "Learjet 60XR",
+        "icao": "LJ60"
+      },
+      "company": {
+        "id": 322,
+        "name": "Executive Air Services",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 2003,
+            "path": "/images/aircraft/learjet-60-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 2004,
+            "path": "/images/aircraft/learjet-60-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": true,
+        "lavatory": true,
+        "hot_meal": true,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": false,
+        "cabin_height": 1.74,
+        "cabin_width": 1.56,
+        "cabin_length": 5.39,
+        "luggage_volume": 6.1,
+        "description": "The Learjet 60XR is a high-performance midsize jet with impressive climb capabilities and a spacious stand-up cabin. Known for its reliability and speed, it offers a comfortable environment for both business and leisure travel."
+      }
+    },
+    {
+      "id": 2003,
+      "registration_number": "N850CX",
+      "year_of_production": 2019,
+      "passengers_max": 7,
+      "aircraft_type": {
+        "id": 303,
+        "name": "Citation Latitude",
+        "icao": "C680"
+      },
+      "company": {
+        "id": 323,
+        "name": "Central Charter Group",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 2005,
+            "path": "/images/aircraft/citation-latitude-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 2006,
+            "path": "/images/aircraft/citation-latitude-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": true,
+        "lavatory": true,
+        "hot_meal": true,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": true,
+        "cabin_height": 1.83,
+        "cabin_width": 1.96,
+        "cabin_length": 6.4,
+        "luggage_volume": 7.27,
+        "description": "The Citation Latitude features a flat-floor cabin with exceptional headroom and a stand-up lavatory. Its combination of comfort, range, and performance has quickly made it one of the most popular midsize jets in the charter market."
+      }
+    },
+    {
+      "id": 2004,
+      "registration_number": "N600LX",
+      "year_of_production": 2021,
+      "passengers_max": 8,
+      "aircraft_type": {
+        "id": 304,
+        "name": "Praetor 500",
+        "icao": "E550"
+      },
+      "company": {
+        "id": 324,
+        "name": "Atlantic Air Charter",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 2007,
+            "path": "/images/aircraft/praetor-500-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 2008,
+            "path": "/images/aircraft/praetor-500-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": true,
+        "lavatory": true,
+        "hot_meal": true,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": true,
+        "cabin_height": 1.83,
+        "cabin_width": 2.08,
+        "cabin_length": 7.37,
+        "luggage_volume": 7.6,
+        "description": "The Embraer Praetor 500 redefines the midsize jet category with its transcontinental range and advanced avionics. It features a flat-floor cabin, cutting-edge technology, and exceptional performance capabilities."
+      }
+    },
+    {
+      "id": 2005,
+      "registration_number": "N421GH",
+      "year_of_production": 2017,
+      "passengers_max": 7,
+      "aircraft_type": {
+        "id": 305,
+        "name": "Gulfstream G150",
+        "icao": "G150"
+      },
+      "company": {
+        "id": 325,
+        "name": "Gulf Aviation Services",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 2009,
+            "path": "/images/aircraft/g150-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 2010,
+            "path": "/images/aircraft/g150-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": true,
+        "lavatory": true,
+        "hot_meal": true,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": false,
+        "cabin_height": 1.75,
+        "cabin_width": 1.75,
+        "cabin_length": 5.44,
+        "luggage_volume": 6.8,
+        "description": "The Gulfstream G150 offers remarkable range and speed for a midsize jet. Its spacious cabin, impressive short-field capabilities, and long-range performance make it an excellent choice for both domestic and international travel."
+      }
+    }
+  ]
