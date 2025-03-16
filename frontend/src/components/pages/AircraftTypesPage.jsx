@@ -1,5 +1,5 @@
 // components/pages/AircraftTypesPage.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Container,
@@ -19,150 +19,349 @@ import {
   Icon,
   Divider,
   Tag,
-  useColorModeValue,
   Grid,
-  GridItem
+  GridItem,
+  Skeleton,
+  Alert,
+  AlertIcon,
+  useToast,
+  ButtonGroup,
+  Select
 } from '@chakra-ui/react';
-import { FaPlane, FaUsers, FaRuler, FaClock, FaSuitcase, FaWifi, FaBed, FaTv } from 'react-icons/fa';
+import { FaPlane, FaUsers, FaRuler, FaClock, FaSuitcase, FaWifi, FaBed, FaTv, FaSync } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-
-// Aircraft data
-const aircraftData = {
-  light: [
-    {
-      id: 'citation-cj4',
-      name: 'Citation CJ4',
-      image: '/images/aircraft/citation-cj4.jpg',
-      passengers: '7-8',
-      range: '2,165 nm',
-      speed: '451 mph',
-      luggage: '6.36 cubic meters',
-      amenities: ['Wi-Fi Available', 'Refreshment Center', 'Power Outlets', 'Leather Seats'],
-      description: 'The Cessna Citation CJ4 is a versatile light jet offering exceptional performance and comfort for short to medium-range flights. With its spacious cabin and advanced avionics, it provides an efficient and comfortable travel experience.'
-    },
-    {
-      id: 'phenom-300',
-      name: 'Phenom 300',
-      image: '/images/aircraft/phenom-300.jpg',
-      passengers: '6-8',
-      range: '1,971 nm',
-      speed: '518 mph',
-      luggage: '5.9 cubic meters',
-      amenities: ['Wi-Fi Available', 'Refreshment Center', 'Lavatory', 'Entertainment System'],
-      description: 'The Embraer Phenom 300 is a popular light jet known for its exceptional performance and cabin comfort. With best-in-class cabin pressurization and low operating costs, it offers an optimal combination of luxury and efficiency.'
-    }
-  ],
-  midsize: [
-    {
-      id: 'citation-xls',
-      name: 'Citation XLS+',
-      image: '/images/aircraft/citation-xls.jpg',
-      passengers: '8-9',
-      range: '2,100 nm',
-      speed: '507 mph',
-      luggage: '7.6 cubic meters',
-      amenities: ['Wi-Fi', 'Full Refreshment Center', 'Fully Enclosed Lavatory', 'Entertainment System', 'Power Outlets'],
-      description: 'The Citation XLS+ combines the comfort and luxury of a midsize jet with remarkable short-field performance. Its spacious stand-up cabin, excellent range, and impressive speed make it one of the most popular midsize jets in the world.'
-    },
-    {
-      id: 'learjet-60',
-      name: 'Learjet 60XR',
-      image: '/images/aircraft/learjet-60.jpg',
-      passengers: '7-8',
-      range: '2,405 nm',
-      speed: '513 mph',
-      luggage: '6.1 cubic meters',
-      amenities: ['Wi-Fi Available', 'Galley', 'Enclosed Lavatory', 'Entertainment System', 'Fold-out Tables'],
-      description: 'The Learjet 60XR is a high-performance midsize jet with impressive climb capabilities and a spacious stand-up cabin. Known for its reliability and speed, it offers a comfortable environment for both business and leisure travel.'
-    }
-  ],
-  supermidsize: [
-    {
-      id: 'challenger-350',
-      name: 'Challenger 350',
-      image: '/images/aircraft/challenger-350.jpg',
-      passengers: '8-10',
-      range: '3,200 nm',
-      speed: '548 mph',
-      luggage: '8.5 cubic meters',
-      amenities: ['Wi-Fi', 'Galley', 'Enclosed Lavatory', 'Entertainment System', 'Flat Floor', 'Large Windows'],
-      description: `The Bombardier Challenger 350 is a super-midsize jet that offers an unparalleled combination of performance and comfort. With its flat floor, stand-up cabin, and exceptional range, it's ideal for transcontinental journeys.`
-    },
-    {
-      id: 'citation-longitude',
-      name: 'Citation Longitude',
-      image: '/images/aircraft/citation-longitude.jpg',
-      passengers: '8-12',
-      range: '3,500 nm',
-      speed: '548 mph',
-      luggage: '8.6 cubic meters',
-      amenities: ['Wi-Fi', 'Full Galley', 'Stand-up Lavatory', 'Entertainment System', 'Flat Floor', 'Walk-in Baggage Compartment'],
-      description: 'The Citation Longitude sets the standard for super-midsize jets with best-in-class cabin comfort, quietness, and technology. Its spacious interior, impressive range, and advanced features make it perfect for both business and leisure travel.'
-    }
-  ],
-  heavy: [
-    {
-      id: 'gulfstream-g450',
-      name: 'Gulfstream G450',
-      image: '/images/aircraft/gulfstream-g450.jpg',
-      passengers: '14-16',
-      range: '4,350 nm',
-      speed: '528 mph',
-      luggage: '12.5 cubic meters',
-      amenities: ['Wi-Fi', 'Full Galley', 'Forward and Aft Lavatories', 'Entertainment System', 'Multiple Living Areas', 'Sleeping Accommodations'],
-      description: 'The Gulfstream G450 is a long-range heavy jet that combines exceptional performance with ultimate luxury. Its spacious cabin can be configured with multiple distinct living areas, including conference and dining facilities.'
-    },
-    {
-      id: 'falcon-2000',
-      name: 'Falcon 2000LXS',
-      image: '/images/aircraft/falcon-2000.jpg',
-      passengers: '10-12',
-      range: '4,000 nm',
-      speed: '513 mph',
-      luggage: '10.4 cubic meters',
-      amenities: ['Wi-Fi', 'Full Galley', 'Enclosed Lavatory', 'Entertainment System', 'Multiple Seating Areas', 'Sleeping Accommodations'],
-      description: 'The Dassault Falcon 2000LXS offers remarkable short-field capability combined with long-range performance. Its wide cabin provides exceptional comfort, while its advanced technology ensures a smooth and efficient flight experience.'
-    }
-  ],
-  ultralong: [
-    {
-      id: 'gulfstream-g650',
-      name: 'Gulfstream G650',
-      image: '/images/aircraft/gulfstream-g650.jpg',
-      passengers: '14-19',
-      range: '7,000 nm',
-      speed: '610 mph',
-      luggage: '16.3 cubic meters',
-      amenities: ['High-Speed Wi-Fi', 'Full Galley with Crew Rest', 'Multiple Lavatories', 'Advanced Entertainment System', 'Multiple Living Areas', 'Private Bedroom', 'Shower Available'],
-      description: 'The Gulfstream G650 is one of the most prestigious ultra-long-range jets, capable of flying nonstop from New York to Tokyo. Its spacious cabin offers unparalleled comfort with low cabin altitude, 100% fresh air, and whisper-quiet noise levels.'
-    },
-    {
-      id: 'global-express',
-      name: 'Global 6000',
-      image: '/images/aircraft/global-6000.jpg',
-      passengers: '14-17',
-      range: '6,000 nm',
-      speed: '590 mph',
-      luggage: '15.8 cubic meters',
-      amenities: ['Ka-band Wi-Fi', 'Full Galley with Crew Rest', 'Forward and Aft Lavatories', 'Advanced Entertainment System', 'Private Stateroom', 'Conference Area', 'Dining Area'],
-      description: 'The Bombardier Global 6000 combines remarkable range with exceptional comfort and luxury. Its three-zone cabin allows for distinct living spaces, including a private stateroom, while its advanced wing design ensures a smooth and comfortable ride.'
-    }
-  ]
-};
+import { useQuery, useQueryClient } from 'react-query';
+import { fetchAircraftByClass } from '../../utils/aircraftService';
+import LoadingSpinner from '../ui/LoadingSpinner';
 
 const AircraftTypesPage = () => {
   const navigate = useNavigate();
+  const toast = useToast();
+  const queryClient = useQueryClient();
+  const [tabIndex, setTabIndex] = useState(0);
   const [selectedAircraft, setSelectedAircraft] = useState(null);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+  const [totalPages, setTotalPages] = useState(1);
 
+  // Map tab index to aircraft class
+  const classMap = ['light', 'midsize', 'supermidsize', 'heavy', 'ultralong'];
+  const currentClass = classMap[tabIndex];
+
+  // First query - Quick load from database (useFromDb=true)
+  const {
+    data: localData,
+    isLoading,
+    isError,
+    error
+  } = useQuery(
+    ['aircraft', currentClass, 'local', currentPage, limit],
+    () => fetchAircraftByClass(currentClass, true, currentPage, limit),
+    {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      refetchOnWindowFocus: false,
+      onSuccess: (data) => {
+        // Update total pages from the response
+        if (data && data.pagination) {
+          setTotalPages(data.pagination.totalPages);
+        }
+      },
+      onError: (err) => {
+        toast({
+          title: 'Error loading aircraft data',
+          description: err.message || 'Could not load aircraft data',
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+        });
+      }
+    }
+  );
+
+  // Second query - Latest data from API (useFromDb=false)
+  const { data: apiData, isLoading: isApiLoading } = useQuery(
+    ['aircraft', currentClass, 'api', currentPage, limit],
+    () => fetchAircraftByClass(currentClass, false, currentPage, limit),
+    {
+      enabled: !!localData, // Only run after local data is loaded
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      refetchOnWindowFocus: false,
+      onSuccess: (data) => {
+        // Update total pages from the API response
+        if (data && data.pagination) {
+          setTotalPages(data.pagination.totalPages);
+        }
+        
+        if (isRefreshing) {
+          toast({
+            title: 'Data refreshed',
+            description: 'Aircraft data has been updated with the latest information',
+            status: 'success',
+            duration: 3000,
+            isClosable: true,
+          });
+          setIsRefreshing(false);
+        }
+      },
+      onError: (err) => {
+        if (isRefreshing) {
+          toast({
+            title: 'Error refreshing data',
+            description: err.message || 'Could not refresh aircraft data',
+            status: 'error',
+            duration: 5000,
+            isClosable: true,
+          });
+          setIsRefreshing(false);
+        }
+      }
+    }
+  );
+
+  // Use API data if available, otherwise use local data
+  const data = apiData || localData;
+
+  // Handler for tab change
+  const handleTabChange = (index) => {
+    setTabIndex(index);
+    setSelectedAircraft(null);
+    setCurrentPage(1); // Reset to first page when changing tabs
+  };
+
+  // Handler for viewing aircraft details
   const viewAircraft = (aircraft) => {
     setSelectedAircraft(aircraft);
     setTimeout(() => {
-      document.getElementById('aircraft-details').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('aircraft-details')?.scrollIntoView({ behavior: 'smooth' });
     }, 100);
   };
 
+  // Handler for booking a flight
   const bookFlight = () => {
-    navigate('/booking');
+    navigate('/booking', { 
+      state: { selectedAircraftId: selectedAircraft?.aircraftId } 
+    });
+  };
+  
+  // Filter out aircraft without images
+  const filterAircraftWithImages = (aircraftData) => {
+    if (!aircraftData || !aircraftData.data) return [];
+    
+    return {
+      ...aircraftData,
+      data: aircraftData.data.filter(aircraft => 
+        aircraft.images && aircraft.images.length > 0
+      )
+    };
+  };
+  
+  // Filtered data
+  const filteredData = filterAircraftWithImages(data);
+
+  // Handler for manual refresh
+  const handleRefresh = () => {
+    setIsRefreshing(true);
+    queryClient.invalidateQueries(['aircraft', currentClass, 'api', currentPage, limit]);
+  };
+  
+  // Handler for page change
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    setSelectedAircraft(null); // Clear selected aircraft when changing page
+    
+    // Scroll to top of the page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  
+  // Handler for limit change
+  const handleLimitChange = (e) => {
+    const newLimit = parseInt(e.target.value);
+    setLimit(newLimit);
+    setCurrentPage(1); // Reset to first page when changing limit
+  };
+
+  // Process aircraft for display
+  const processAircraftForDisplay = (aircraft) => {
+    const mainImageUrl = aircraft.images && aircraft.images.length > 0
+      ? aircraft.images.find(img => img.tag === 'exterior')?.path || aircraft.images[0].path
+      : `/images/aircraft/placeholders/${aircraft.aircraftType.name.toLowerCase().replace(/\s+/g, '-')}.jpg`;
+      
+    return {
+      id: aircraft.aircraftId,
+      name: aircraft.aircraftType.name,
+      image: mainImageUrl,
+      passengers: `${aircraft.passengersMax || 'N/A'}`,
+      range: calculateRange(aircraft),
+      description: aircraft.description || getDefaultDescription(aircraft)
+    };
+  };
+
+  // Helper function to get readable class name
+  const getReadableClassName = (className) => {
+    switch (className) {
+      case 'light': return 'Light Jets';
+      case 'midsize': return 'Midsize Jets';
+      case 'supermidsize': return 'Super Midsize Jets';
+      case 'heavy': return 'Heavy Jets';
+      case 'ultralong': return 'Ultra Long Range Jets';
+      default: return className;
+    }
+  };
+
+  // Helper function to get class description
+  const getClassDescription = (className) => {
+    switch (className) {
+      case 'light':
+        return 'Light jets are ideal for shorter trips, typically accommodating 4-8 passengers with a range of 1,500-2,000 nautical miles. These aircraft are perfect for regional travel, offering an efficient and cost-effective private flying experience.';
+      case 'midsize':
+        return 'Midsize jets offer more cabin space, passenger capacity, and range than light jets. Typically seating 6-9 passengers with a range of 2,000-3,000 nautical miles, these aircraft are ideal for transcontinental travel.';
+      case 'supermidsize':
+        return `Super midsize jets bridge the gap between midsize and heavy jets, offering enhanced range, speed, and cabin space. With capacity for 8-12 passengers and a range of 3,000-4,000 nautical miles, they're excellent for domestic and international travel.`;
+      case 'heavy':
+        return 'Heavy jets provide ultimate comfort for long-range travel, accommodating 10-16 passengers with a range of 4,000-5,000 nautical miles. These aircraft offer spacious cabins with distinct living areas and enhanced amenities for intercontinental flights.';
+      case 'ultralong':
+        return 'Ultra long range jets represent the pinnacle of private aviation, offering luxurious accommodations for 12-19 passengers with ranges exceeding 6,000 nautical miles. These aircraft can fly nonstop between any two major cities worldwide.';
+      default:
+        return '';
+    }
+  };
+
+  // Calculate estimated range based on aircraft class
+  const calculateRange = (aircraft) => {
+    if (!aircraft) return 'N/A';
+    
+    const className = aircraft.aircraftType.class.name;
+    // Approximate ranges by aircraft class
+    const ranges = {
+      'Light': '1,500-2,000 nm',
+      'Midsize': '2,000-3,000 nm',
+      'Super midsize': '3,000-4,000 nm',
+      'Heavy': '4,000-5,000 nm',
+      'Ultra long range': '6,000+ nm'
+    };
+    
+    return ranges[className] || 'N/A';
+  };
+
+  // Get default description if none is available
+  const getDefaultDescription = (aircraft) => {
+    if (!aircraft) return '';
+    
+    const type = aircraft.aircraftType.name;
+    const className = aircraft.aircraftType.class.name;
+    
+    return `The ${type} is a versatile ${className.toLowerCase()} jet offering exceptional performance and comfort for ${className.toLowerCase() === 'light' ? 'short to medium' : className.toLowerCase() === 'ultralong' ? 'ultra-long' : 'medium to long'}-range flights. With its ${className.toLowerCase() === 'light' ? 'efficient' : 'spacious'} cabin and advanced avionics, it provides an efficient and comfortable travel experience for up to ${aircraft.passengersMax} passengers.`;
+  };
+  
+  // Pagination Component
+  const PaginationControl = () => {
+    // Don't render if there's only 1 page
+    if (totalPages <= 1) return null;
+    
+    // Calculate which page buttons to show
+    const pages = [];
+    const maxButtons = 5;
+    
+    if (totalPages <= maxButtons) {
+      // Show all pages if there are fewer than maxButtons
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      // Always include first page
+      pages.push(1);
+      
+      // Calculate start and end of current page group
+      let start = Math.max(2, currentPage - 1);
+      let end = Math.min(totalPages - 1, currentPage + 1);
+      
+      // Adjust if at the beginning
+      if (currentPage <= 2) {
+        end = Math.min(totalPages - 1, maxButtons - 1);
+      }
+      
+      // Adjust if at the end
+      if (currentPage >= totalPages - 1) {
+        start = Math.max(2, totalPages - maxButtons + 2);
+      }
+      
+      // Add ellipsis if needed before current group
+      if (start > 2) {
+        pages.push('...');
+      }
+      
+      // Add pages in current group
+      for (let i = start; i <= end; i++) {
+        pages.push(i);
+      }
+      
+      // Add ellipsis if needed after current group
+      if (end < totalPages - 1) {
+        pages.push('...');
+      }
+      
+      // Always include last page
+      pages.push(totalPages);
+    }
+    
+    return (
+      <Flex justify="center" mt={10} wrap="wrap">
+        <HStack spacing={4}>
+          <ButtonGroup isAttached variant="outline" size="sm">
+            <Button
+              onClick={() => handlePageChange(1)}
+              isDisabled={currentPage === 1}
+            >
+              First
+            </Button>
+            <Button
+              onClick={() => handlePageChange(currentPage - 1)}
+              isDisabled={currentPage === 1}
+            >
+              Previous
+            </Button>
+            
+            {pages.map((page, index) => (
+              <Button
+                key={index}
+                onClick={() => page !== '...' && handlePageChange(page)}
+                isActive={page === currentPage}
+                variant={page === currentPage ? 'solid' : 'outline'}
+                colorScheme={page === currentPage ? 'brand' : 'gray'}
+                cursor={page === '...' ? 'default' : 'pointer'}
+              >
+                {page}
+              </Button>
+            ))}
+            
+            <Button
+              onClick={() => handlePageChange(currentPage + 1)}
+              isDisabled={currentPage === totalPages}
+            >
+              Next
+            </Button>
+            <Button
+              onClick={() => handlePageChange(totalPages)}
+              isDisabled={currentPage === totalPages}
+            >
+              Last
+            </Button>
+          </ButtonGroup>
+          
+          <Select
+            value={limit}
+            onChange={handleLimitChange}
+            width="120px"
+            size="sm"
+          >
+            <option value={5}>5 per page</option>
+            <option value={10}>10 per page</option>
+            <option value={20}>20 per page</option>
+          </Select>
+        </HStack>
+      </Flex>
+    );
   };
 
   return (
@@ -178,7 +377,7 @@ const AircraftTypesPage = () => {
       </Box>
 
       {/* Aircraft Selection Tabs */}
-      <Tabs colorScheme="brand" mb={20} isLazy>
+      <Tabs colorScheme="brand" mb={20} isLazy onChange={handleTabChange} index={tabIndex}>
         <TabList overflowX="auto" flexWrap="nowrap" sx={{ scrollbarWidth: 'none' }}>
           <Tab fontWeight="medium">Light Jets</Tab>
           <Tab fontWeight="medium">Midsize Jets</Tab>
@@ -188,125 +387,83 @@ const AircraftTypesPage = () => {
         </TabList>
 
         <TabPanels mt={8}>
-          {/* Light Jets Panel */}
-          <TabPanel>
-            <VStack spacing={8} align="stretch">
-              <Box>
-                <Heading as="h2" size="xl" mb={4}>
-                  Light Jets
-                </Heading>
-                <Text color="gray.600" mb={6}>
-                  Light jets are ideal for shorter trips, typically accommodating 4-8 passengers with a range of 1,500-2,000 nautical miles. These aircraft are perfect for regional travel, offering an efficient and cost-effective private flying experience.
-                </Text>
-                
-                <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={8}>
-                  {aircraftData.light.map((aircraft) => (
-                    <AircraftCard 
-                      key={aircraft.id} 
-                      aircraft={aircraft} 
-                      viewDetails={() => viewAircraft(aircraft)}
-                    />
-                  ))}
-                </SimpleGrid>
-              </Box>
-            </VStack>
-          </TabPanel>
-
-          {/* Midsize Jets Panel */}
-          <TabPanel>
-            <VStack spacing={8} align="stretch">
-              <Box>
-                <Heading as="h2" size="xl" mb={4}>
-                  Midsize Jets
-                </Heading>
-                <Text color="gray.600" mb={6}>
-                  Midsize jets offer more cabin space, passenger capacity, and range than light jets. Typically seating 6-9 passengers with a range of 2,000-3,000 nautical miles, these aircraft are ideal for transcontinental travel.
-                </Text>
-                
-                <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={8}>
-                  {aircraftData.midsize.map((aircraft) => (
-                    <AircraftCard 
-                      key={aircraft.id} 
-                      aircraft={aircraft} 
-                      viewDetails={() => viewAircraft(aircraft)}
-                    />
-                  ))}
-                </SimpleGrid>
-              </Box>
-            </VStack>
-          </TabPanel>
-
-          {/* Super Midsize Jets Panel */}
-          <TabPanel>
-            <VStack spacing={8} align="stretch">
-              <Box>
-                <Heading as="h2" size="xl" mb={4}>
-                  Super Midsize Jets
-                </Heading>
-                <Text color="gray.600" mb={6}>
-                  Super midsize jets bridge the gap between midsize and heavy jets, offering enhanced range, speed, and cabin space. With capacity for 8-12 passengers and a range of 3,000-4,000 nautical miles, they're excellent for domestic and international travel.
-                </Text>
-                
-                <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={8}>
-                  {aircraftData.supermidsize.map((aircraft) => (
-                    <AircraftCard 
-                      key={aircraft.id} 
-                      aircraft={aircraft} 
-                      viewDetails={() => viewAircraft(aircraft)}
-                    />
-                  ))}
-                </SimpleGrid>
-              </Box>
-            </VStack>
-          </TabPanel>
-
-          {/* Heavy Jets Panel */}
-          <TabPanel>
-            <VStack spacing={8} align="stretch">
-              <Box>
-                <Heading as="h2" size="xl" mb={4}>
-                  Heavy Jets
-                </Heading>
-                <Text color="gray.600" mb={6}>
-                  Heavy jets provide ultimate comfort for long-range travel, accommodating 10-16 passengers with a range of 4,000-5,000 nautical miles. These aircraft offer spacious cabins with distinct living areas and enhanced amenities for intercontinental flights.
-                </Text>
-                
-                <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={8}>
-                  {aircraftData.heavy.map((aircraft) => (
-                    <AircraftCard 
-                      key={aircraft.id} 
-                      aircraft={aircraft} 
-                      viewDetails={() => viewAircraft(aircraft)}
-                    />
-                  ))}
-                </SimpleGrid>
-              </Box>
-            </VStack>
-          </TabPanel>
-
-          {/* Ultra Long Range Panel */}
-          <TabPanel>
-            <VStack spacing={8} align="stretch">
-              <Box>
-                <Heading as="h2" size="xl" mb={4}>
-                  Ultra Long Range Jets
-                </Heading>
-                <Text color="gray.600" mb={6}>
-                  Ultra long range jets represent the pinnacle of private aviation, offering luxurious accommodations for 12-19 passengers with ranges exceeding 6,000 nautical miles. These aircraft can fly nonstop between any two major cities worldwide.
-                </Text>
-                
-                <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={8}>
-                  {aircraftData.ultralong.map((aircraft) => (
-                    <AircraftCard 
-                      key={aircraft.id} 
-                      aircraft={aircraft} 
-                      viewDetails={() => viewAircraft(aircraft)}
-                    />
-                  ))}
-                </SimpleGrid>
-              </Box>
-            </VStack>
-          </TabPanel>
+          {/* Generate Tab Panels for each aircraft class */}
+          {classMap.map((className, idx) => (
+            <TabPanel key={className}>
+              <VStack spacing={8} align="stretch">
+                <Box>
+                  <Flex justify="space-between" align="center" mb={4}>
+                    <Heading as="h2" size="xl">
+                      {getReadableClassName(className)}
+                    </Heading>
+                    <Button 
+                      leftIcon={<FaSync />} 
+                      onClick={handleRefresh} 
+                      isLoading={isRefreshing || isApiLoading}
+                      loadingText="Refreshing"
+                      size="sm"
+                      colorScheme="brand"
+                      variant="outline"
+                    >
+                      Refresh
+                    </Button>
+                  </Flex>
+                  <Text color="gray.600" mb={6}>
+                    {getClassDescription(className)}
+                  </Text>
+                  
+                  {isLoading ? (
+                    <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={8}>
+                      {[1, 2, 3, 4].map((i) => (
+                        <Box 
+                          key={i}
+                          borderWidth="1px" 
+                          borderRadius="lg" 
+                          overflow="hidden"
+                          boxShadow="md"
+                        >
+                          <Skeleton height="250px" width="100%" />
+                          <Box p={6}>
+                            <Skeleton height="30px" width="70%" mb={4} />
+                            <Skeleton height="20px" width="90%" mb={2} />
+                            <Skeleton height="20px" width="80%" mb={4} />
+                            <Skeleton height="40px" width="100%" />
+                          </Box>
+                        </Box>
+                      ))}
+                    </SimpleGrid>
+                  ) : isError ? (
+                    <Alert status="error" borderRadius="md">
+                      <AlertIcon />
+                      {error?.message || 'Failed to load aircraft data. Please try again later.'}
+                    </Alert>
+                  ) : filteredData.data && filteredData.data.length > 0 ? (
+                    <>
+                      <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={8}>
+                        {filteredData.data.map((aircraft) => {
+                          const displayAircraft = processAircraftForDisplay(aircraft);
+                          return (
+                            <AircraftCard 
+                              key={aircraft.aircraftId} 
+                              aircraft={displayAircraft} 
+                              viewDetails={() => viewAircraft(aircraft)}
+                            />
+                          );
+                        })}
+                      </SimpleGrid>
+                      
+                      {/* Pagination Controls */}
+                      <PaginationControl />
+                    </>
+                  ) : (
+                    <Box textAlign="center" py={10}>
+                      <Text fontSize="lg">No aircraft found with images for this category.</Text>
+                    </Box>
+                  )}
+                </Box>
+              </VStack>
+            </TabPanel>
+          ))}
         </TabPanels>
       </Tabs>
 
@@ -316,53 +473,66 @@ const AircraftTypesPage = () => {
           <Divider mb={10} />
           
           <Heading as="h2" size="xl" mb={8}>
-            {selectedAircraft.name} Details
+            {selectedAircraft.aircraftType.name} Details
           </Heading>
           
           <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={8}>
             <GridItem>
-              <Image 
-                src={selectedAircraft.image} 
-                alt={selectedAircraft.name} 
-                borderRadius="lg"
-                width="100%" 
-                height="auto"
-                objectFit="cover"
-                fallbackSrc="https://via.placeholder.com/800x450?text=Aircraft+Image"
-              />
+              {selectedAircraft.images && selectedAircraft.images.length > 0 ? (
+                <Image 
+                  src={selectedAircraft.images.find(img => img.tag === 'exterior')?.path || selectedAircraft.images[0].path} 
+                  alt={selectedAircraft.aircraftType.name} 
+                  borderRadius="lg"
+                  width="100%" 
+                  height="auto"
+                  objectFit="cover"
+                  fallbackSrc={`/images/aircraft/placeholders/${selectedAircraft.aircraftType.name.toLowerCase().replace(/\s+/g, '-')}.jpg`}
+                />
+              ) : (
+                <Image 
+                  src={`/images/aircraft/placeholders/${selectedAircraft.aircraftType.name.toLowerCase().replace(/\s+/g, '-')}.jpg`}
+                  alt={selectedAircraft.aircraftType.name} 
+                  borderRadius="lg"
+                  width="100%" 
+                  height="auto"
+                  objectFit="cover"
+                />
+              )}
             </GridItem>
             
             <GridItem>
               <VStack align="start" spacing={6}>
-                <Text fontSize="lg">{selectedAircraft.description}</Text>
+                <Text fontSize="lg">
+                  {selectedAircraft.description || getDefaultDescription(selectedAircraft)}
+                </Text>
                 
                 <SimpleGrid columns={2} spacing={6} width="100%">
                   <Specification 
                     icon={FaUsers} 
                     title="Passengers" 
-                    value={selectedAircraft.passengers} 
+                    value={`${selectedAircraft.passengersMax || 'N/A'}`} 
                   />
                   <Specification 
                     icon={FaRuler} 
                     title="Range" 
-                    value={selectedAircraft.range} 
+                    value={calculateRange(selectedAircraft)} 
                   />
                   <Specification 
                     icon={FaClock} 
                     title="Speed" 
-                    value={selectedAircraft.speed} 
+                    value={calculateSpeed(selectedAircraft)} 
                   />
                   <Specification 
                     icon={FaSuitcase} 
                     title="Luggage" 
-                    value={selectedAircraft.luggage} 
+                    value={`${selectedAircraft.features?.luggageVolume || 'N/A'} cubic meters`} 
                   />
                 </SimpleGrid>
                 
                 <Box width="100%">
                   <Text fontWeight="medium" mb={2}>Amenities:</Text>
                   <Flex flexWrap="wrap" gap={2}>
-                    {selectedAircraft.amenities.map((amenity, index) => (
+                    {getAmenities(selectedAircraft).map((amenity, index) => (
                       <Tag key={index} size="md" colorScheme="brand" borderRadius="full" py={1} px={3}>
                         {amenity}
                       </Tag>
@@ -383,172 +553,63 @@ const AircraftTypesPage = () => {
           </Grid>
         </Box>
       )}
-
-      {/* Comparison Section */}
-      <Box mb={20}>
-        <Heading as="h2" size="xl" textAlign="center" mb={10}>
-          Aircraft Class Comparison
-        </Heading>
-        
-        <Box overflowX="auto">
-          <Box minWidth="800px">
-            <Grid
-              templateColumns="repeat(6, 1fr)"
-              gap={0}
-              borderWidth="1px"
-              borderRadius="lg"
-              overflow="hidden"
-            >
-              {/* Table Header */}
-              <GridItem bg="brand.500" color="white" p={4} fontWeight="bold">
-                Features
-              </GridItem>
-              <GridItem bg="brand.500" color="white" p={4} fontWeight="bold">
-                Light Jets
-              </GridItem>
-              <GridItem bg="brand.500" color="white" p={4} fontWeight="bold">
-                Midsize Jets
-              </GridItem>
-              <GridItem bg="brand.500" color="white" p={4} fontWeight="bold">
-                Super Midsize
-              </GridItem>
-              <GridItem bg="brand.500" color="white" p={4} fontWeight="bold">
-                Heavy Jets
-              </GridItem>
-              <GridItem bg="brand.500" color="white" p={4} fontWeight="bold">
-                Ultra Long Range
-              </GridItem>
-
-              {/* Passengers */}
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px" fontWeight="medium">
-                Passengers
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px">
-                4-8
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px">
-                6-9
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px">
-                8-12
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px">
-                10-16
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px">
-                12-19
-              </GridItem>
-
-              {/* Range */}
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px" fontWeight="medium">
-                Range (nm)
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px">
-                1,500-2,000
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px">
-                2,000-3,000
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px">
-                3,000-4,000
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px">
-                4,000-5,000
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px">
-                6,000+
-              </GridItem>
-
-              {/* Baggage */}
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px" fontWeight="medium">
-                Baggage (cubic m)
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px">
-                3-6
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px">
-                6-8
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px">
-                8-10
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px">
-                10-13
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px">
-                15+
-              </GridItem>
-
-              {/* Cabin Height */}
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px" fontWeight="medium">
-                Cabin Height
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px">
-                4.5-4.9 ft
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px">
-                5.1-5.7 ft
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px">
-                5.8-6.0 ft
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px" borderRightWidth="1px">
-                6.0-6.2 ft
-              </GridItem>
-              <GridItem p={4} borderBottomWidth="1px">
-                6.2-6.5 ft
-              </GridItem>
-
-              {/* Typical Routes */}
-              <GridItem p={4} borderRightWidth="1px" fontWeight="medium">
-                Typical Routes
-              </GridItem>
-              <GridItem p={4} borderRightWidth="1px">
-                New York to Chicago
-              </GridItem>
-              <GridItem p={4} borderRightWidth="1px">
-                Los Angeles to Dallas
-              </GridItem>
-              <GridItem p={4} borderRightWidth="1px">
-                New York to Miami
-              </GridItem>
-              <GridItem p={4} borderRightWidth="1px">
-                Los Angeles to New York
-              </GridItem>
-              <GridItem p={4}>
-                London to Hong Kong
-              </GridItem>
-            </Grid>
-          </Box>
-        </Box>
-      </Box>
-
-      {/* CTA Section */}
-      <Box 
-        bg="brand.500" 
-        borderRadius="xl" 
-        p={{ base: 6, md: 10 }}
-        color="white"
-        textAlign="center"
-      >
-        <Heading as="h2" size="xl" mb={4}>
-          Ready to Experience Private Jet Travel?
-        </Heading>
-        <Text fontSize="lg" mb={6} maxW="3xl" mx="auto">
-          Book your private jet today and enjoy the comfort, convenience, and luxury of flying on your own schedule.
-        </Text>
-        <Button 
-          size="lg" 
-          colorScheme="white" 
-          variant="outline" 
-          _hover={{ bg: 'whiteAlpha.200' }}
-          onClick={bookFlight}
-        >
-          Book Your Flight
-        </Button>
-      </Box>
     </Container>
   );
+};
+
+// Calculate estimated cruise speed based on aircraft type
+const calculateSpeed = (aircraft) => {
+  if (!aircraft) return 'N/A';
+  
+  // Approximate speeds based on aircraft type
+  const aircraftType = aircraft.aircraftType.name;
+  if (aircraftType.includes('Citation')) return '450-500 mph';
+  if (aircraftType.includes('Learjet')) return '460-520 mph';
+  if (aircraftType.includes('Challenger')) return '470-540 mph';
+  if (aircraftType.includes('Falcon')) return '480-530 mph';
+  if (aircraftType.includes('Gulfstream')) return '500-600 mph';
+  if (aircraftType.includes('Global')) return '510-590 mph';
+  if (aircraftType.includes('Phenom')) return '450-520 mph';
+  
+  // Default speeds by class
+  const className = aircraft.aircraftType.class.name;
+  const speeds = {
+    'Light': '440-480 mph',
+    'Midsize': '460-510 mph',
+    'Super midsize': '490-540 mph',
+    'Heavy': '500-560 mph',
+    'Ultra long range': '550-610 mph'
+  };
+  
+  return speeds[className] || '450-500 mph';
+};
+
+// Get amenities from aircraft features
+const getAmenities = (aircraft) => {
+  const amenities = [];
+  
+  if (!aircraft || !aircraft.features) {
+    return ['Comfortable Seating', 'Air Conditioning', 'Power Outlets'];
+  }
+  
+  if (aircraft.features.wirelessInternet) amenities.push('Wi-Fi Available');
+  if (aircraft.features.entertainmentSystem) amenities.push('Entertainment System');
+  if (aircraft.features.lavatory) amenities.push('Lavatory');
+  if (aircraft.features.hotMeal) amenities.push('Refreshment Center');
+  if (aircraft.features.cabinCrew) amenities.push('Cabin Crew');
+  if (aircraft.features.satellitePhone) amenities.push('Satellite Phone');
+  if (aircraft.features.shower) amenities.push('Shower Available');
+  if (aircraft.features.sleepingPlaces && aircraft.features.sleepingPlaces > 0) 
+    amenities.push('Sleeping Accommodations');
+  
+  // Add some default amenities if we have too few
+  if (amenities.length < 3) {
+    if (!amenities.includes('Power Outlets')) amenities.push('Power Outlets');
+    if (!amenities.includes('Leather Seats')) amenities.push('Leather Seats');
+    if (!amenities.includes('Work Tables')) amenities.push('Work Tables');
+  }
+  
+  return amenities;
 };
 
 // Aircraft Card Component
@@ -569,7 +630,7 @@ const AircraftCard = ({ aircraft, viewDetails }) => {
         height="250px"
         width="100%"
         objectFit="cover"
-        fallbackSrc="https://via.placeholder.com/500x250?text=Aircraft+Image"
+        fallbackSrc={`/images/aircraft/placeholders/generic.jpg`}
       />
       
       <Box p={6}>

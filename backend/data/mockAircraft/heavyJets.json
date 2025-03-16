@@ -1,0 +1,214 @@
+[
+  {
+    "id": 4001,
+    "registration_number": "N450GF",
+    "year_of_production": 2019,
+    "passengers_max": 14,
+    "aircraft_type": {
+      "id": 401,
+      "name": "Gulfstream G450",
+      "icao": "GLF4"
+    },
+    "company": {
+      "id": 401,
+      "name": "Gulf Luxury Jets",
+      "is_operator": true
+    },
+    "images": [
+      {
+        "media": {
+          "id": 4001,
+          "path": "/images/aircraft/gulfstream-g450-exterior.jpg"
+        },
+        "position": 0,
+        "tag": {
+          "value": "exterior"
+        }
+      },
+      {
+        "media": {
+          "id": 4002,
+          "path": "/images/aircraft/gulfstream-g450-cabin.jpg"
+        },
+        "position": 1,
+        "tag": {
+          "value": "cabin"
+        }
+      }
+    ],
+    "aircraft_extension": {
+      "cabin_crew": true,
+      "lavatory": true,
+      "hot_meal": true,
+      "wireless_internet": true,
+      "entertainment_system": true,
+      "satellite_phone": true,
+      "shower": false,
+      "sleeping_places": 6,
+      "cabin_height": 1.88,
+      "cabin_width": 2.24,
+      "cabin_length": 13.97,
+      "luggage_volume": 12.5,
+      "description": "The Gulfstream G450 is a long-range heavy jet that combines exceptional performance with ultimate luxury. Its spacious cabin can be configured with multiple distinct living areas, including conference and dining facilities."
+    }
+  },
+  {
+    "id": 4002,
+    "registration_number": "N2000F",
+    "year_of_production": 2020,
+    "passengers_max": 12,
+    "aircraft_type": {
+      "id": 402,
+      "name": "Falcon 2000LXS",
+      "icao": "F2TH"
+    },
+    "company": {
+      "id": 402,
+      "name": "Atlantic Jets",
+      "is_operator": true
+    },
+    "images": [
+      {
+        "media": {
+          "id": 4003,
+          "path": "/images/aircraft/falcon-2000-exterior.jpg"
+        },
+        "position": 0,
+        "tag": {
+          "value": "exterior"
+        }
+      },
+      {
+        "media": {
+          "id": 4004,
+          "path": "/images/aircraft/falcon-2000-cabin.jpg"
+        },
+        "position": 1,
+        "tag": {
+          "value": "cabin"
+        }
+      }
+    ],
+    "aircraft_extension": {
+      "cabin_crew": true,
+      "lavatory": true,
+      "hot_meal": true,
+      "wireless_internet": true,
+      "entertainment_system": true,
+      "satellite_phone": true,
+      "shower": false,
+      "sleeping_places": 4,
+      "cabin_height": 1.88,
+      "cabin_width": 2.34,
+      "cabin_length": 8.51,
+      "luggage_volume": 10.4,
+      "description": "The Dassault Falcon 2000LXS offers remarkable short-field capability combined with long-range performance. Its wide cabin provides exceptional comfort, while its advanced technology ensures a smooth and efficient flight experience."
+    }
+  },
+  {
+    "id": 4003,
+    "registration_number": "N604LG",
+    "year_of_production": 2018,
+    "passengers_max": 13,
+    "aircraft_type": {
+      "id": 403,
+      "name": "Legacy 600",
+      "icao": "E135"
+    },
+    "company": {
+      "id": 403,
+      "name": "Global Charter Group",
+      "is_operator": true
+    },
+    "images": [
+      {
+        "media": {
+          "id": 4005,
+          "path": "/images/aircraft/legacy-600-exterior.jpg"
+        },
+        "position": 0,
+        "tag": {
+          "value": "exterior"
+        }
+      },
+      {
+        "media": {
+          "id": 4006,
+          "path": "/images/aircraft/legacy-600-cabin.jpg"
+        },
+        "position": 1,
+        "tag": {
+          "value": "cabin"
+        }
+      }
+    ],
+    "aircraft_extension": {
+      "cabin_crew": true,
+      "lavatory": true,
+      "hot_meal": true,
+      "wireless_internet": true,
+      "entertainment_system": true,
+      "satellite_phone": true,
+      "shower": false,
+      "sleeping_places": 4,
+      "cabin_height": 1.82,
+      "cabin_width": 2.1,
+      "cabin_length": 12.46,
+      "luggage_volume": 11.3,
+      "description": "The Embraer Legacy 600 features one of the largest cabins in its class with three distinct zones for work, entertainment, and rest. Its exceptional range and comfortable environment make it perfect for international business travel."
+    }
+  },
+  {
+    "id": 4004,
+    "registration_number": "N900CL",
+    "year_of_production": 2021,
+    "passengers_max": 12,
+    "aircraft_type": {
+      "id": 404,
+      "name": "Challenger 650",
+      "icao": "CL65"
+    },
+    "company": {
+      "id": 404,
+      "name": "Premium Aviation",
+      "is_operator": true
+    },
+    "images": [
+      {
+        "media": {
+          "id": 4007,
+          "path": "/images/aircraft/challenger-650-exterior.jpg"
+        },
+        "position": 0,
+        "tag": {
+          "value": "exterior"
+        }
+      },
+      {
+        "media": {
+          "id": 4008,
+          "path": "/images/aircraft/challenger-650-cabin.jpg"
+        },
+        "position": 1,
+        "tag": {
+          "value": "cabin"
+        }
+      }
+    ],
+    "aircraft_extension": {
+      "cabin_crew": true,
+      "lavatory": true,
+      "hot_meal": true,
+      "wireless_internet": true,
+      "entertainment_system": true,
+      "satellite_phone": true,
+      "shower": false,
+      "sleeping_places": 5,
+      "cabin_height": 1.83,
+      "cabin_width": 2.41,
+      "cabin_length": 7.8,
+      "luggage_volume": 11.6,
+      "description": "The Bombardier Challenger 650 offers an exceptionally wide cabin with advanced connectivity, entertainment features, and comfortable sleeping accommodations. Its transcontinental range and reliability make it a top choice for demanding travelers."
+    }
+  }
+]

@@ -1,0 +1,267 @@
+[
+    {
+      "id": 5001,
+      "registration_number": "N650GU",
+      "year_of_production": 2020,
+      "passengers_max": 16,
+      "aircraft_type": {
+        "id": 501,
+        "name": "Gulfstream G650",
+        "icao": "GLF6"
+      },
+      "company": {
+        "id": 501,
+        "name": "Ultra Elite Aviation",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 5001,
+            "path": "/images/aircraft/gulfstream-g650-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 5002,
+            "path": "/images/aircraft/gulfstream-g650-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": true,
+        "lavatory": true,
+        "hot_meal": true,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": true,
+        "shower": true,
+        "sleeping_places": 10,
+        "cabin_height": 1.98,
+        "cabin_width": 2.59,
+        "cabin_length": 14.27,
+        "luggage_volume": 16.3,
+        "description": "The Gulfstream G650 is one of the most prestigious ultra-long-range jets, capable of flying nonstop from New York to Tokyo. Its spacious cabin offers unparalleled comfort with low cabin altitude, 100% fresh air, and whisper-quiet noise levels."
+      }
+    },
+    {
+      "id": 5002,
+      "registration_number": "N6000G",
+      "year_of_production": 2019,
+      "passengers_max": 17,
+      "aircraft_type": {
+        "id": 502,
+        "name": "Global 6000",
+        "icao": "GL6T"
+      },
+      "company": {
+        "id": 502,
+        "name": "Worldwide Aviation Group",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 5003,
+            "path": "/images/aircraft/global-6000-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 5004,
+            "path": "/images/aircraft/global-6000-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": true,
+        "lavatory": true,
+        "hot_meal": true,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": true,
+        "shower": true,
+        "sleeping_places": 8,
+        "cabin_height": 1.91,
+        "cabin_width": 2.44,
+        "cabin_length": 13.18,
+        "luggage_volume": 15.8,
+        "description": "The Bombardier Global 6000 combines remarkable range with exceptional comfort and luxury. Its three-zone cabin allows for distinct living spaces, including a private stateroom, while its advanced wing design ensures a smooth and comfortable ride."
+      }
+    },
+    {
+      "id": 5003,
+      "registration_number": "N700FX",
+      "year_of_production": 2021,
+      "passengers_max": 15,
+      "aircraft_type": {
+        "id": 503,
+        "name": "Falcon 7X",
+        "icao": "FA7X"
+      },
+      "company": {
+        "id": 503,
+        "name": "European Luxury Jets",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 5005,
+            "path": "/images/aircraft/falcon-7x-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 5006,
+            "path": "/images/aircraft/falcon-7x-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": true,
+        "lavatory": true,
+        "hot_meal": true,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": true,
+        "shower": false,
+        "sleeping_places": 6,
+        "cabin_height": 1.88,
+        "cabin_width": 2.34,
+        "cabin_length": 11.91,
+        "luggage_volume": 14.1,
+        "description": "The Dassault Falcon 7X is the first business jet with a digital flight control system, offering exceptional handling and a smooth ride. Its tri-jet design provides additional safety and performance, while its spacious cabin ensures maximum comfort for long-range flights."
+      }
+    },
+    {
+      "id": 5004,
+      "registration_number": "N7500G",
+      "year_of_production": 2022,
+      "passengers_max": 19,
+      "aircraft_type": {
+        "id": 504,
+        "name": "Global 7500",
+        "icao": "GL7T"
+      },
+      "company": {
+        "id": 504,
+        "name": "Premier Global Aviation",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 5007,
+            "path": "/images/aircraft/global-7500-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 5008,
+            "path": "/images/aircraft/global-7500-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": true,
+        "lavatory": true,
+        "hot_meal": true,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": true,
+        "shower": true,
+        "sleeping_places": 12,
+        "cabin_height": 1.98,
+        "cabin_width": 2.44,
+        "cabin_length": 16.59,
+        "luggage_volume": 17.6,
+        "description": "The Global 7500 is the largest and longest-range business jet in the industry, capable of connecting virtually any two cities worldwide. With four distinct living spaces including a permanent bedroom, it offers an unparalleled level of comfort and luxury for ultra-long-range travel."
+      }
+    },
+    {
+      "id": 5005,
+      "registration_number": "N650ER",
+      "year_of_production": 2022,
+      "passengers_max": 16,
+      "aircraft_type": {
+        "id": 505,
+        "name": "Gulfstream G650ER",
+        "icao": "GL6E"
+      },
+      "company": {
+        "id": 505,
+        "name": "Global Executive Flights",
+        "is_operator": true
+      },
+      "images": [
+        {
+          "media": {
+            "id": 5009,
+            "path": "/images/aircraft/g650er-exterior.jpg"
+          },
+          "position": 0,
+          "tag": {
+            "value": "exterior"
+          }
+        },
+        {
+          "media": {
+            "id": 5010,
+            "path": "/images/aircraft/g650er-cabin.jpg"
+          },
+          "position": 1,
+          "tag": {
+            "value": "cabin"
+          }
+        }
+      ],
+      "aircraft_extension": {
+        "cabin_crew": true,
+        "lavatory": true,
+        "hot_meal": true,
+        "wireless_internet": true,
+        "entertainment_system": true,
+        "satellite_phone": true,
+        "shower": true,
+        "sleeping_places": 10,
+        "cabin_height": 1.98,
+        "cabin_width": 2.59,
+        "cabin_length": 14.27,
+        "luggage_volume": 16.3,
+        "description": "The Gulfstream G650ER extends the range of the already impressive G650, enabling nonstop flights of up to 7,500 nautical miles. Its cabin offers unmatched comfort with 100% fresh air, low cabin altitude, and 16 panoramic windows that flood the interior with natural light."
+      }
+    }
+  ]

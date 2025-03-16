@@ -34,6 +34,8 @@ app.use('/api/contact', require('./routes/contact'));
 app.use('/api/partners', require('./routes/partners'));
 app.use('/api/empty-legs', require('./routes/emptyLegs'));
 app.use('/api/prices', require('./routes/prices.js'));
+app.use('/api/aircraft', require('./routes/aircraft.js'));
+app.use('/api/aviapages', require('./routes/aviapages'));
 
 // Error handling middleware
 app.use(errorHandler);
