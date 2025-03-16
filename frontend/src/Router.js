@@ -44,6 +44,7 @@ const AppRouter = () => {
       <Route path="/reset-password/:resetToken" element={<ResetPasswordPage />} />
       <Route path="/aircraft-types" element={<AircraftTypesPage />} />
       <Route path="/aircraft/:id" element={<AircraftDetailsPage />} />
+      <Route path="/aircraft-types/:type" element={<AircraftTypesPage />} />
       
       {/* Protected Routes */}
       <Route path="/booking" element={
