@@ -1,7 +1,5 @@
 // utils/aircraftService.js - Frontend utility for aircraft data
-import axios from 'axios';
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+import api from './api';
 
 /**
  * Fetches aircraft by class
@@ -18,7 +16,7 @@ export const fetchAircraftByClass = async (className, useFromDb = true, page = 1
       ? `/aircraft/class/${className}?page=${page}&limit=${limit}` 
       : `/aircraft/class/${className}/api?page=${page}&limit=${limit}`;
     
-    const response = await axios.get(`${API_URL}${endpoint}`);
+    const response = await api.get(`${endpoint}`);
     return response.data;
   } catch (error) {
     console.error(`Error fetching ${className} aircraft: ${error.message}`);
@@ -33,7 +31,7 @@ export const fetchAircraftByClass = async (className, useFromDb = true, page = 1
  */
 export const fetchAircraftById = async (id) => {
   try {
-    const response = await axios.get(`${API_URL}/aircraft/${id}`);
+    const response = await api.get(`/aircraft/${id}`);
     return response.data;
   } catch (error) {
     console.error(`Error fetching aircraft with ID ${id}: ${error.message}`);

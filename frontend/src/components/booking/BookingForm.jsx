@@ -27,7 +27,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useBooking } from "../../hooks/useBooking";
 import AirportSearchInput from "../ui/AirportSearchInput";
-import axios from "axios";
+import api from "../../utils/api";
 
 const BookingForm = ({ destinationAirport }) => {
   const router = useNavigate();
@@ -70,11 +70,7 @@ const BookingForm = ({ destinationAirport }) => {
           return; // Skip if not authenticated
         }
 
-        const response = await axios.get("http://localhost:5000/api/users/me", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await api.get("/users/me");
 
         // Handle various scenarios for user preferences
         if (response.data && response.data.data) {

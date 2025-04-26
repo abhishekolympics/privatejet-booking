@@ -21,7 +21,7 @@ import {
 import { FaEnvelope } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
+import api from "../../utils/api";
 
 const ForgotPasswordPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -41,7 +41,7 @@ const ForgotPasswordPage = () => {
     setMessage(null);
     
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/forgot-password', data);
+      const response = await api.post('/auth/forgot-password', data);
       
       setMessage(response.data.message || 'If an account exists with that email, a password reset link has been sent.');
       reset(); // Clear form

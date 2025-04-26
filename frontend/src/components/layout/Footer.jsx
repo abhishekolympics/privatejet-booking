@@ -23,7 +23,7 @@ import {
 } from "react-icons/fa";
 import { useState } from "react";
 import { useToast } from "@chakra-ui/react";
-import axios from "axios";  
+import api from "../../utils/api";
 
 
 const Footer = () => {
@@ -48,9 +48,8 @@ const Footer = () => {
     setIsSubscribing(true);
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/contact/subscribe",
-        { email: subscribeEmail }
+      const response = await api.post(
+        "/contact/subscribe", { email: subscribeEmail }
       );
 
       setSubscribeEmail("");
