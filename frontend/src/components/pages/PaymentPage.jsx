@@ -44,7 +44,24 @@ const PaymentPage = () => {
       // Combine all data for booking
       const bookingData = {
         flightDetails: bookingDetails,
-        aircraft: selectedAircraft,
+        aircraft: {
+          id: selectedAircraft.id,
+          registration_number: selectedAircraft.registration_number || selectedAircraft.registration || selectedAircraft.tail_number,
+          aircraft_type: selectedAircraft.aircraft_type || selectedAircraft.type,
+          aircraft_class: selectedAircraft.aircraft_class || selectedAircraft.class,
+          passengers_max: selectedAircraft.passengers_max || selectedAircraft.maxPassengers || selectedAircraft.capacity,
+          company: selectedAircraft.company ? {
+            id: selectedAircraft.company.id,
+            name: selectedAircraft.company.name,
+            slug: selectedAircraft.company.slug || '',
+            logo_path: selectedAircraft.company.logo_path || ''
+          } : null,
+          images: selectedAircraft.images ? 
+            (Array.isArray(selectedAircraft.images) ? 
+              selectedAircraft.images.map(img => typeof img === 'string' ? img : (img.url || img.path || '')) : 
+              [])
+            : []
+        },
         price: charteredPrice,
         contactInfo: {
           firstName: data.firstName,
@@ -59,7 +76,8 @@ const PaymentPage = () => {
           cvv: data.cvv,
           nameOnCard: data.nameOnCard,
           billingAddress: data.billingAddress
-        }
+        },
+        specialRequests: data.specialRequests || ''
       };
       
       // Call API to create booking
@@ -83,7 +101,7 @@ const PaymentPage = () => {
       console.error('Booking error', error);
       toast({
         title: 'Booking Error',
-        description: error.message || 'There was an error processing your booking. Please try again.',
+        description: error.response?.data?.message || error.message || 'There was an error processing your booking. Please try again.',
         status: 'error',
         duration: 5000,
         isClosable: true,

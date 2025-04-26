@@ -21,7 +21,7 @@ import {
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
+import api from '../../utils/api';
 
 const ResetPasswordPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,9 +46,7 @@ const ResetPasswordPage = () => {
     setMessage(null);
     
     try {
-      const response = await axios.post(`http://localhost:5000/api/auth/reset-password/${resetToken}`, {
-        password: data.password
-      });
+      const response = await api.post(`/auth/reset-password/${resetToken}`, { password: data.password});
       
       setMessage(response.data.message || 'Your password has been reset successfully.');
       

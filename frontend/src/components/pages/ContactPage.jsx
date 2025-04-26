@@ -30,7 +30,7 @@ import {
   FaPaperPlane 
 } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
+import api from '../../utils/api';
 
 const ContactPage = () => {
   const toast = useToast();
@@ -50,7 +50,7 @@ const ContactPage = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await axios.post('http://localhost:5000/api/contact', data);
+      const response = await api.post('http://localhost:5000/api/contact', data);
       
       toast({
         title: 'Message Sent',
@@ -93,7 +93,7 @@ const ContactPage = () => {
     setIsSubscribing(true);
     
     try {
-      const response = await axios.post('http://localhost:5000/api/contact/subscribe', { email: subscribeEmail });
+      const response = await api.post('http://localhost:5000/api/contact/subscribe', { email: subscribeEmail });
       
       setSubscribeSuccess(true);
       setSubscribeEmail('');
