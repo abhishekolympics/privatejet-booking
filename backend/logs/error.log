@@ -38,3 +38,42 @@
 2025-03-03 20:52:45:5245 [31merror[39m: [31mError: Invalid credentials[39m
 2025-03-03 20:52:50:5250 [31merror[39m: [31mError: Invalid credentials[39m
 2025-03-03 20:54:20:5420 [31merror[39m: [31mError: User already exists[39m
+2025-03-23 09:37:20:3720 [31merror[39m: [31mBooking creation error: Booking validation failed: aircraft: Cast to string failed for value "{[39m
+[31m  id: 5939,[39m
+[31m  registration: 'LX-EMO',[39m
+[31m  type: 'Falcon 900EX EASy',[39m
+[31m  class: undefined,[39m
+[31m  maxPassengers: 14,[39m
+[31m  company: {[39m
+[31m    id: 288,[39m
+[31m    name: 'FLYINGGROUP',[39m
+[31m    slug: 'flying-group',[39m
+[31m    logo_path: 'https://md.aviapages.com/media/2021/08/16/FlyingGroup_2020_2714px_UbawVTs.jpg'[39m
+[31m  },[39m
+[31m  images: [[39m
+[31m    'https://md.aviapages.com/media/2021/01/22/DSC09025.jpeg',[39m
+[31m    'https://md.aviapages.com/media/2022/01/26/5939_47357_.jpeg'[39m
+[31m  ][39m
+[31m}" (type Object) at path "aircraft"[39m
+2025-03-23 09:37:20:3720 [31merror[39m: [31mError: Booking validation failed: aircraft: Cast to string failed for value "{[39m
+[31m  id: 5939,[39m
+[31m  registration: 'LX-EMO',[39m
+[31m  type: 'Falcon 900EX EASy',[39m
+[31m  class: undefined,[39m
+[31m  maxPassengers: 14,[39m
+[31m  company: {[39m
+[31m    id: 288,[39m
+[31m    name: 'FLYINGGROUP',[39m
+[31m    slug: 'flying-group',[39m
+[31m    logo_path: 'https://md.aviapages.com/media/2021/08/16/FlyingGroup_2020_2714px_UbawVTs.jpg'[39m
+[31m  },[39m
+[31m  images: [[39m
+[31m    'https://md.aviapages.com/media/2021/01/22/DSC09025.jpeg',[39m
+[31m    'https://md.aviapages.com/media/2022/01/26/5939_47357_.jpeg'[39m
+[31m  ][39m
+[31m}" (type Object) at path "aircraft"[39m
+2025-04-23 21:30:01:301 [31merror[39m: [31mError: Not authorized to access this route[39m
+2025-04-23 21:30:01:301 [31merror[39m: [31mError: Not authorized to access this route[39m
+2025-04-26 17:20:08:208 [31merror[39m: [31mError: Invalid or expired token[39m
+2025-04-26 19:02:04:24 [31merror[39m: [31mError: Not authorized to access this route[39m
+2025-04-26 19:02:04:24 [31merror[39m: [31mError: Not authorized to access this route[39m

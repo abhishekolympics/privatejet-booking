@@ -81,13 +81,18 @@ exports.createBooking = asyncHandler(async (req, res) => {
       },
       aircraft: {
         id: aircraft.id,
-        registration: aircraft.registration_number || aircraft.tail_number,
-        type: aircraft.aircraft_type,
-        class: aircraft.aircraft_class,
-        maxPassengers: aircraft.passengers_max,
-        company: aircraft.company,
-        images: aircraft.images ? 
-          aircraft.images.map(img => typeof img === 'string' ? img : img.url || img.path) : []
+        registration: aircraft.registration || aircraft.registration_number || aircraft.tail_number,
+        type: aircraft.aircraft_type || aircraft.type,
+        class: aircraft.aircraft_class || aircraft.class,
+        maxPassengers: aircraft.passengers_max || aircraft.maxPassengers || aircraft.capacity,
+        company: {
+          id: aircraft.company?.id || 0,
+          name: aircraft.company?.name || 'Private Operator',
+          slug: aircraft.company?.slug || '',
+          logo_path: aircraft.company?.logo_path || ''
+        },
+        images: Array.isArray(aircraft.images) ? 
+          aircraft.images.map(img => typeof img === 'string' ? img : (img.url || img.path || '')) : []
       },
       contactInfo: {
         firstName: contactInfo.firstName,
