@@ -260,3 +260,259 @@
 2025-03-05 13:36:14:3614 [32minfo[39m: [32mFound 1 airports for term: yctm[39m
 2025-03-05 13:36:17:3617 [32minfo[39m: [32mPOST /api/aviapages/search-aircraft[39m
 2025-03-05 13:36:18:3618 [32minfo[39m: [32mFound 150 aircraft[39m
+2025-03-16 10:41:05:415 [32minfo[39m: [32mServer running on port 5000[39m
+2025-03-16 10:41:05:415 [32minfo[39m: [32mMongoDB Connected[39m
+2025-03-16 10:41:18:4118 [32minfo[39m: [32mPOST /api/contact/subscribe[39m
+2025-03-16 10:41:18:4118 [32minfo[39m: [32mNewsletter subscription from killleraloo@gmail.com[39m
+2025-03-16 10:42:07:427 [32minfo[39m: [32mPOST /api/contact/subscribe[39m
+2025-03-16 10:42:07:427 [32minfo[39m: [32mNewsletter subscription from killleraloo@gmail.com[39m
+2025-03-16 10:47:31:4731 [32minfo[39m: [32mGET /api/aircraft/class/light?page=1&limit=10[39m
+2025-03-16 10:47:31:4731 [32minfo[39m: [32mGET /api/aircraft/class/light/api?page=1&limit=10[39m
+2025-03-16 10:57:45:5745 [32minfo[39m: [32mGET /api/aircraft/class/light?page=1&limit=10[39m
+2025-03-16 10:57:45:5745 [32minfo[39m: [32mGET /api/aircraft/class/light/api?page=1&limit=10[39m
+2025-03-16 10:57:53:5753 [32minfo[39m: [32mGET /api/aircraft/class/midsize?page=1&limit=10[39m
+2025-03-16 10:57:53:5753 [32minfo[39m: [32mGET /api/aircraft/class/midsize/api?page=1&limit=10[39m
+2025-03-16 10:58:12:5812 [32minfo[39m: [32mGET /api/aircraft/class/heavy?page=1&limit=10[39m
+2025-03-16 10:58:12:5812 [32minfo[39m: [32mGET /api/aircraft/class/heavy/api?page=1&limit=10[39m
+2025-03-16 11:01:25:125 [32minfo[39m: [32mGET /api/aircraft/class/supermidsize?page=1&limit=10[39m
+2025-03-16 11:01:25:125 [32minfo[39m: [32mGET /api/aircraft/class/supermidsize/api?page=1&limit=10[39m
+2025-03-16 11:01:27:127 [32minfo[39m: [32mGET /api/aircraft/class/ultralong?page=1&limit=10[39m
+2025-03-16 11:01:27:127 [32minfo[39m: [32mGET /api/aircraft/class/ultralong/api?page=1&limit=10[39m
+2025-03-16 11:02:06:26 [32minfo[39m: [32mPOST /api/auth/login[39m
+2025-03-16 11:02:07:27 [32minfo[39m: [32mGET /api/users/me[39m
+2025-03-16 11:02:07:27 [32minfo[39m: [32mGET /api/users/me[39m
+2025-03-16 11:02:39:239 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:02:39:239 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:02:40:240 [32minfo[39m: [32mGET /api/users/me[39m
+2025-03-16 11:02:40:240 [32minfo[39m: [32mGET /api/users/me[39m
+2025-03-16 11:02:43:243 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:02:43:243 [32minfo[39m: [32mGET /api/empty-legs[39m
+2025-03-16 11:02:43:243 [32minfo[39m: [32mGetting all empty leg flights with automatic price update[39m
+2025-03-16 11:02:43:243 [32minfo[39m: [32mStarting scheduled update of empty leg prices[39m
+2025-03-16 11:02:43:243 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:02:43:243 [32minfo[39m: [32mGET /api/empty-legs[39m
+2025-03-16 11:02:43:243 [32minfo[39m: [32mGetting all empty leg flights with automatic price update[39m
+2025-03-16 11:02:43:243 [32minfo[39m: [32mStarting scheduled update of empty leg prices[39m
+2025-03-16 11:02:43:243 [32minfo[39m: [32mEmpty leg prices updated: 18 updated, 0 added[39m
+2025-03-16 11:02:43:243 [32minfo[39m: [32mAuto price update completed: 18 updated, 0 added[39m
+2025-03-16 11:02:43:243 [32minfo[39m: [32mEmpty leg prices updated: 18 updated, 0 added[39m
+2025-03-16 11:02:43:243 [32minfo[39m: [32mAuto price update completed: 18 updated, 0 added[39m
+2025-03-16 11:02:48:248 [32minfo[39m: [32mGET /api/aircraft/class/light?page=1&limit=10[39m
+2025-03-16 11:02:48:248 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:02:48:248 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:02:49:249 [32minfo[39m: [32mGET /api/aircraft/class/light/api?page=1&limit=10[39m
+2025-03-16 11:02:57:257 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:02:57:257 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:10:01:101 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:10:01:101 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:10:17:1017 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:10:17:1017 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:10:48:1048 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:10:48:1048 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:11:37:1137 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:11:37:1137 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:12:43:1243 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:12:43:1243 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:14:25:1425 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:14:25:1425 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:14:28:1428 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:14:28:1428 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:14:30:1430 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:14:30:1430 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-16 11:33:13:3313 [32minfo[39m: [32mGET /api/users/me[39m
+2025-03-16 11:33:13:3313 [32minfo[39m: [32mGET /api/users/me[39m
+2025-03-16 11:33:16:3316 [32minfo[39m: [32mGET /api/aviapages/airports?term=KO[39m
+2025-03-16 11:33:16:3316 [32minfo[39m: [32mGET /api/aviapages/airports?term=KOL[39m
+2025-03-16 11:33:16:3316 [32minfo[39m: [32mGET /api/aviapages/airports?term=KOLK[39m
+2025-03-16 11:33:17:3317 [32minfo[39m: [32mFound 312 airports for term: KO[39m
+2025-03-16 11:33:17:3317 [32minfo[39m: [32mFound 33 airports for term: KOL[39m
+2025-03-16 11:33:17:3317 [32minfo[39m: [32mGET /api/aviapages/airports?term=KOLKA[39m
+2025-03-16 11:33:17:3317 [32minfo[39m: [32mFound 1 airports for term: KOLK[39m
+2025-03-16 11:33:17:3317 [32minfo[39m: [32mGET /api/aviapages/airports?term=KOLKAT[39m
+2025-03-16 11:33:17:3317 [32minfo[39m: [32mFound 1 airports for term: KOLKA[39m
+2025-03-16 11:33:17:3317 [32minfo[39m: [32mGET /api/aviapages/airports?term=KOLKATA[39m
+2025-03-16 11:33:18:3318 [32minfo[39m: [32mFound 1 airports for term: KOLKAT[39m
+2025-03-16 11:33:18:3318 [32minfo[39m: [32mFound 1 airports for term: KOLKATA[39m
+2025-03-16 11:33:41:3341 [32minfo[39m: [32mGET /api/aviapages/airports?term=DE[39m
+2025-03-16 11:33:42:3342 [32minfo[39m: [32mGET /api/aviapages/airports?term=DEL[39m
+2025-03-16 11:33:42:3342 [32minfo[39m: [32mFound 1582 airports for term: DE[39m
+2025-03-16 11:33:42:3342 [32minfo[39m: [32mGET /api/aviapages/airports?term=DELH[39m
+2025-03-16 11:33:42:3342 [32minfo[39m: [32mGET /api/aviapages/airports?term=DELHU[39m
+2025-03-16 11:33:42:3342 [32minfo[39m: [32mFound 10 airports for term: DELH[39m
+2025-03-16 11:33:42:3342 [32minfo[39m: [32mFound 148 airports for term: DEL[39m
+2025-03-16 11:33:43:3343 [32minfo[39m: [32mFound 0 airports for term: DELHU[39m
+2025-03-16 11:33:47:3347 [32minfo[39m: [32mPOST /api/aviapages/search-aircraft[39m
+2025-03-16 11:33:49:3349 [32minfo[39m: [32mFound 150 aircraft[39m
+2025-03-23 09:34:39:3439 [32minfo[39m: [32mServer running on port 5000[39m
+2025-03-23 09:34:39:3439 [32minfo[39m: [32mMongoDB Connected[39m
+2025-03-23 09:35:34:3534 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-23 09:35:34:3534 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-03-23 09:35:49:3549 [32minfo[39m: [32mGET /api/users/me[39m
+2025-03-23 09:35:49:3549 [32minfo[39m: [32mGET /api/users/me[39m
+2025-03-23 09:35:49:3549 [32minfo[39m: [32mGET /api/aviapages/airports?term=KMIA[39m
+2025-03-23 09:35:51:3551 [32minfo[39m: [32mFound 1 airports for term: KMIA[39m
+2025-03-23 09:36:00:360 [32minfo[39m: [32mGET /api/aviapages/airports?term=lsgg[39m
+2025-03-23 09:36:01:361 [32minfo[39m: [32mFound 1 airports for term: lsgg[39m
+2025-03-23 09:36:11:3611 [32minfo[39m: [32mPOST /api/aviapages/search-aircraft[39m
+2025-03-23 09:36:13:3613 [32minfo[39m: [32mFound 150 aircraft[39m
+2025-03-23 09:36:44:3644 [32minfo[39m: [32mPOST /api/aviapages/charter-price[39m
+2025-03-23 09:36:45:3645 [32minfo[39m: [32mGET /api/users/me[39m
+2025-03-23 09:36:45:3645 [32minfo[39m: [32mGET /api/users/me[39m
+2025-03-23 09:36:45:3645 [32minfo[39m: [32mCharter price fetched successfully[39m
+2025-03-23 09:37:20:3720 [32minfo[39m: [32mPOST /api/bookings[39m
+2025-03-23 09:37:20:3720 [31merror[39m: [31mBooking creation error: Booking validation failed: aircraft: Cast to string failed for value "{[39m
+[31m  id: 5939,[39m
+[31m  registration: 'LX-EMO',[39m
+[31m  type: 'Falcon 900EX EASy',[39m
+[31m  class: undefined,[39m
+[31m  maxPassengers: 14,[39m
+[31m  company: {[39m
+[31m    id: 288,[39m
+[31m    name: 'FLYINGGROUP',[39m
+[31m    slug: 'flying-group',[39m
+[31m    logo_path: 'https://md.aviapages.com/media/2021/08/16/FlyingGroup_2020_2714px_UbawVTs.jpg'[39m
+[31m  },[39m
+[31m  images: [[39m
+[31m    'https://md.aviapages.com/media/2021/01/22/DSC09025.jpeg',[39m
+[31m    'https://md.aviapages.com/media/2022/01/26/5939_47357_.jpeg'[39m
+[31m  ][39m
+[31m}" (type Object) at path "aircraft"[39m
+2025-03-23 09:37:20:3720 [31merror[39m: [31mError: Booking validation failed: aircraft: Cast to string failed for value "{[39m
+[31m  id: 5939,[39m
+[31m  registration: 'LX-EMO',[39m
+[31m  type: 'Falcon 900EX EASy',[39m
+[31m  class: undefined,[39m
+[31m  maxPassengers: 14,[39m
+[31m  company: {[39m
+[31m    id: 288,[39m
+[31m    name: 'FLYINGGROUP',[39m
+[31m    slug: 'flying-group',[39m
+[31m    logo_path: 'https://md.aviapages.com/media/2021/08/16/FlyingGroup_2020_2714px_UbawVTs.jpg'[39m
+[31m  },[39m
+[31m  images: [[39m
+[31m    'https://md.aviapages.com/media/2021/01/22/DSC09025.jpeg',[39m
+[31m    'https://md.aviapages.com/media/2022/01/26/5939_47357_.jpeg'[39m
+[31m  ][39m
+[31m}" (type Object) at path "aircraft"[39m
+2025-03-23 09:42:30:4230 [32minfo[39m: [32mServer running on port 5000[39m
+2025-03-23 09:42:30:4230 [32minfo[39m: [32mMongoDB Connected[39m
+2025-03-23 09:43:00:430 [32minfo[39m: [32mServer running on port 5000[39m
+2025-03-23 09:43:00:430 [32minfo[39m: [32mMongoDB Connected[39m
+2025-03-23 09:43:51:4351 [32minfo[39m: [32mPOST /api/bookings[39m
+2025-03-23 09:43:52:4352 [32minfo[39m: [32mGET /api/bookings[39m
+2025-03-23 09:57:56:5756 [32minfo[39m: [32mGET /api/bookings[39m
+2025-04-23 21:29:55:2955 [32minfo[39m: [32mServer running on port 5000[39m
+2025-04-23 21:29:55:2955 [32minfo[39m: [32mMongoDB Connected[39m
+2025-04-23 21:30:01:301 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-04-23 21:30:01:301 [31merror[39m: [31mError: Not authorized to access this route[39m
+2025-04-23 21:30:01:301 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-04-23 21:30:01:301 [31merror[39m: [31mError: Not authorized to access this route[39m
+2025-04-23 21:30:13:3013 [32minfo[39m: [32mPOST /api/auth/login[39m
+2025-04-23 21:30:14:3014 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-23 21:30:14:3014 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-23 21:30:14:3014 [32minfo[39m: [32mGET /api/aviapages/airports?term=KMIA[39m
+2025-04-23 21:30:15:3015 [32minfo[39m: [32mFound 1 airports for term: KMIA[39m
+2025-04-23 21:30:18:3018 [32minfo[39m: [32mGET /api/aviapages/airports?term=lk[39m
+2025-04-23 21:30:18:3018 [32minfo[39m: [32mGET /api/aviapages/airports?term=lko[39m
+2025-04-23 21:30:18:3018 [32minfo[39m: [32mFound 87 airports for term: lk[39m
+2025-04-23 21:30:19:3019 [32minfo[39m: [32mFound 7 airports for term: lko[39m
+2025-04-23 21:30:26:3026 [32minfo[39m: [32mPOST /api/aviapages/search-aircraft[39m
+2025-04-23 21:30:28:3028 [32minfo[39m: [32mFound 150 aircraft[39m
+2025-04-23 21:30:48:3048 [32minfo[39m: [32mPOST /api/aviapages/charter-price[39m
+2025-04-23 21:30:49:3049 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-23 21:30:49:3049 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-23 21:30:49:3049 [32minfo[39m: [32mCharter price fetched successfully[39m
+2025-04-23 21:31:42:3142 [32minfo[39m: [32mPOST /api/bookings[39m
+2025-04-23 21:31:43:3143 [32minfo[39m: [32mGET /api/bookings[39m
+2025-04-23 21:32:48:3248 [32minfo[39m: [32mGET /api/bookings[39m
+2025-04-23 21:33:33:3333 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-23 21:33:33:3333 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-23 21:33:35:3335 [32minfo[39m: [32mGET /api/aircraft/class/light?page=1&limit=10[39m
+2025-04-23 21:33:35:3335 [32minfo[39m: [32mGET /api/aircraft/class/light/api?page=1&limit=10[39m
+2025-04-23 21:44:39:4439 [32minfo[39m: [32mGET /api/bookings[39m
+2025-04-26 16:58:47:5847 [32minfo[39m: [32mServer running on port 5000[39m
+2025-04-26 16:58:47:5847 [32minfo[39m: [32mMongoDB Connected[39m
+2025-04-26 16:59:19:5919 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-04-26 16:59:19:5919 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-04-26 17:00:49:049 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-04-26 17:00:49:049 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-04-26 17:00:59:059 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-04-26 17:01:00:10 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-04-26 17:02:36:236 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-04-26 17:02:36:236 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-04-26 17:03:57:357 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-26 17:03:57:357 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-26 17:04:05:45 [32minfo[39m: [32mGET /api/bookings[39m
+2025-04-26 17:04:13:413 [32minfo[39m: [32mPATCH /api/users/me[39m
+2025-04-26 17:04:16:416 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-26 17:04:16:416 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-26 17:04:25:425 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-26 17:04:32:432 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-26 17:06:29:629 [32minfo[39m: [32mPOST /api/contact/subscribe[39m
+2025-04-26 17:06:29:629 [32minfo[39m: [32mNewsletter subscription from abhishek19980402@gmail.com[39m
+2025-04-26 17:08:31:831 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-04-26 17:08:31:831 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-04-26 17:09:45:945 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-04-26 17:09:45:945 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-04-26 17:10:08:108 [32minfo[39m: [32mPOST /api/contact[39m
+2025-04-26 17:10:08:108 [32minfo[39m: [32mContact form submission from Abhishek Kumar Singh (killleraloo@gmail.com)[39m
+2025-04-26 17:13:18:1318 [32minfo[39m: [32mPOST /api/auth/forgot-password[39m
+2025-04-26 17:13:24:1324 [32minfo[39m: [32mEmail sent: <c0038c17-3f76-9d19-60fc-5b49daa17475@gmail.com>[39m
+2025-04-26 17:18:26:1826 [32minfo[39m: [32mPOST /api/auth/forgot-password[39m
+2025-04-26 17:19:32:1932 [32minfo[39m: [32mPOST /api/auth/reset-password/adf9c68f2f2e17b433ab3710bf8cf2938ec1cf37[39m
+2025-04-26 17:20:08:208 [32minfo[39m: [32mPOST /api/auth/reset-password/adf9c68f2f2e17b433ab3710bf8cf2938ec1cf37[39m
+2025-04-26 17:20:08:208 [31merror[39m: [31mError: Invalid or expired token[39m
+2025-04-26 17:36:29:3629 [32minfo[39m: [32mPOST /api/auth/login[39m
+2025-04-26 17:36:29:3629 [32minfo[39m: [32mGET /api/bookings[39m
+2025-04-26 19:02:04:24 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-04-26 19:02:04:24 [31merror[39m: [31mError: Not authorized to access this route[39m
+2025-04-26 19:02:04:24 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-04-26 19:02:04:24 [31merror[39m: [31mError: Not authorized to access this route[39m
+2025-04-26 19:02:47:247 [32minfo[39m: [32mPOST /api/auth/login[39m
+2025-04-26 19:02:48:248 [32minfo[39m: [32mGET /api/bookings[39m
+2025-04-26 19:03:00:30 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-26 19:03:00:30 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-26 19:03:02:32 [32minfo[39m: [32mGET /api/aviapages/airports?term=lsgg[39m
+2025-04-26 19:03:04:34 [32minfo[39m: [32mFound 1 airports for term: lsgg[39m
+2025-04-26 19:03:07:37 [32minfo[39m: [32mGET /api/aviapages/airports?term=ef[39m
+2025-04-26 19:03:08:38 [32minfo[39m: [32mFound 100 airports for term: ef[39m
+2025-04-26 19:03:08:38 [32minfo[39m: [32mGET /api/aviapages/airports?term=efe[39m
+2025-04-26 19:03:08:38 [32minfo[39m: [32mFound 14 airports for term: efe[39m
+2025-04-26 19:03:16:316 [32minfo[39m: [32mPOST /api/aviapages/search-aircraft[39m
+2025-04-26 19:03:21:321 [32minfo[39m: [32mFound 150 aircraft[39m
+2025-04-26 19:03:31:331 [32minfo[39m: [32mPOST /api/aviapages/charter-price[39m
+2025-04-26 19:03:31:331 [32minfo[39m: [32mCharter price fetched successfully[39m
+2025-04-26 19:03:32:332 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-26 19:03:32:332 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-26 19:03:56:356 [32minfo[39m: [32mPOST /api/bookings[39m
+2025-04-26 19:03:56:356 [32minfo[39m: [32mGET /api/bookings[39m
+2025-04-26 19:04:29:429 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-26 19:04:29:429 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-26 19:04:30:430 [32minfo[39m: [32mGET /api/aviapages/airports?term=lsgg[39m
+2025-04-26 19:04:34:434 [32minfo[39m: [32mGET /api/aviapages/airports?term=lt[39m
+2025-04-26 19:04:34:434 [32minfo[39m: [32mFound 1 airports for term: lsgg[39m
+2025-04-26 19:04:34:434 [32minfo[39m: [32mGET /api/aviapages/airports?term=lts[39m
+2025-04-26 19:04:34:434 [32minfo[39m: [32mFound 236 airports for term: lt[39m
+2025-04-26 19:04:34:434 [32minfo[39m: [32mFound 5 airports for term: lts[39m
+2025-04-26 19:04:34:434 [32minfo[39m: [32mGET /api/aviapages/airports?term=ltc[39m
+2025-04-26 19:04:35:435 [32minfo[39m: [32mGET /api/aviapages/airports?term=ltcu[39m
+2025-04-26 19:04:35:435 [32minfo[39m: [32mFound 1 airports for term: ltc[39m
+2025-04-26 19:04:35:435 [32minfo[39m: [32mFound 1 airports for term: ltcu[39m
+2025-04-27 11:57:39:5739 [32minfo[39m: [32mServer running on port 5000[39m
+2025-04-27 11:57:39:5739 [32minfo[39m: [32mMongoDB Connected[39m
+2025-04-27 11:57:54:5754 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-04-27 11:57:54:5754 [32minfo[39m: [32mGET /api/auth/me[39m
+2025-04-27 11:58:01:581 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-27 11:58:01:581 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-27 11:58:06:586 [32minfo[39m: [32mGET /api/aviapages/airports?term=lsgg[39m
+2025-04-27 11:58:08:588 [32minfo[39m: [32mFound 1 airports for term: lsgg[39m
+2025-04-27 11:58:11:5811 [32minfo[39m: [32mGET /api/aviapages/airports?term=ev[39m
+2025-04-27 11:58:11:5811 [32minfo[39m: [32mFound 277 airports for term: ev[39m
+2025-04-27 11:58:23:5823 [32minfo[39m: [32mPOST /api/aviapages/search-aircraft[39m
+2025-04-27 11:58:25:5825 [32minfo[39m: [32mFound 150 aircraft[39m
+2025-04-27 11:58:31:5831 [32minfo[39m: [32mPOST /api/aviapages/charter-price[39m
+2025-04-27 11:58:31:5831 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-27 11:58:31:5831 [32minfo[39m: [32mGET /api/users/me[39m
+2025-04-27 11:58:32:5832 [32minfo[39m: [32mCharter price fetched successfully[39m
+2025-04-27 11:59:02:592 [32minfo[39m: [32mPOST /api/bookings[39m
+2025-04-27 11:59:02:592 [32minfo[39m: [32mGET /api/bookings[39m

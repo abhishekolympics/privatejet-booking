@@ -2,6 +2,35 @@
 
 const mongoose = require('mongoose');
 
+// Create schema for nested objects
+const AirportSchema = new mongoose.Schema({
+  id: Number,
+  icao: String,
+  iata: String,
+  name: String,
+  city: {
+    name: String
+  },
+  country: {
+    name: String
+  }
+}, { _id: false });
+
+const AircraftSchema = new mongoose.Schema({
+  id: Number,
+  registration: String,
+  type: String,
+  class: String,
+  maxPassengers: Number,
+  company: {
+    id: Number,
+    name: String,
+    slug: String,
+    logo_path: String
+  },
+  images: [String]
+}, { _id: false });
+
 const BookingSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -39,30 +68,8 @@ const BookingSchema = new mongoose.Schema({
   flightDetails: {
     legs: [
       {
-        departureAirport: {
-          id: Number,
-          icao: String,
-          iata: String,
-          name: String,
-          city: {
-            name: String
-          },
-          country: {
-            name: String
-          }
-        },
-        arrivalAirport: {
-          id: Number,
-          icao: String,
-          iata: String,
-          name: String,
-          city: {
-            name: String
-          },
-          country: {
-            name: String
-          }
-        },
+        departureAirport: AirportSchema,
+        arrivalAirport: AirportSchema,
         departureDateTime: {
           type: Date,
           required: true
@@ -74,18 +81,7 @@ const BookingSchema = new mongoose.Schema({
       }
     ]
   },
-  aircraft: {
-    id: Number,
-    registration: String,
-    type: String,
-    class: String,
-    maxPassengers: Number,
-    company: {
-      id: Number,
-      name: String
-    },
-    images: [String]
-  },
+  aircraft: AircraftSchema,
   contactInfo: {
     firstName: {
       type: String,
