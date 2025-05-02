@@ -50,7 +50,7 @@ const ContactPage = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await api.post('http://localhost:5000/api/contact', data);
+      const response = await api.post('https://privatejet-booking.onrender.com/api/contact', data);
       
       toast({
         title: 'Message Sent',
@@ -93,7 +93,7 @@ const ContactPage = () => {
     setIsSubscribing(true);
     
     try {
-      const response = await api.post('http://localhost:5000/api/contact/subscribe', { email: subscribeEmail });
+      const response = await api.post('https://privatejet-booking.onrender.com/api/contact/subscribe', { email: subscribeEmail });
       
       setSubscribeSuccess(true);
       setSubscribeEmail('');
