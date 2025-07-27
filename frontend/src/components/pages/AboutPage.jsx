@@ -63,7 +63,7 @@ const AboutPage = () => {
           </Heading>
           <VStack spacing={4} align="start">
             <Text>
-              Founded in 2023, PrivateJet was created to solve the challenges in the private aviation
+              Founded in 2025, PrivateJet was created to solve the challenges in the private aviation
               industry. We saw that booking private jets was often slow, outdated, and lacked transparency.
             </Text>
             <Text>
@@ -147,7 +147,7 @@ const AboutPage = () => {
       </Box>
 
       {/* Team Section */}
-      <Box mb={20} id="leadership-team">
+      {/* <Box mb={20} id="leadership-team">
         <Heading as="h2" size="xl" textAlign="center" mb={10}>
           Our Leadership Team
         </Heading>
@@ -165,7 +165,7 @@ const AboutPage = () => {
             description="Tech entrepreneur with multiple successful platforms in the travel industry."
           />
         </SimpleGrid>
-      </Box>
+      </Box> */}
 
       {/* CTA Section */}
       <Box 

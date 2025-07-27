@@ -261,7 +261,7 @@ const HomePage = () => {
                   maxW={{ base: "100%", lg: "100%" }}
                 >
                   <SplitText
-                    text="Elevate Your Travel Experience"
+                    text="Elevate Your Travel Experience in Style"
                     delay={30}
                     animationFrom={{
                       opacity: 0,
