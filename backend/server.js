@@ -41,6 +41,14 @@ app.use('/api/prices', require('./routes/prices.js'));
 app.use('/api/aircraft', require('./routes/aircraft.js'));
 app.use('/api/aviapages', require('./routes/aviapages'));
 
+// Serve React frontend in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'))
+  );
+}
+
 // Error handling middleware
 app.use(errorHandler);
 
